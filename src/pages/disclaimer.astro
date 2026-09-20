@@ -1,0 +1,80 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title="Vehicle Listing Disclaimer"
+  description={`Disclaimers concerning vehicle availability, pricing, condition, history and warranties on ${site.name} listings.`}
+>
+  <p>
+    The vehicle information shown on this website is provided for general information only.
+    {site.name} makes every reasonable effort to keep listings accurate, but relies in part on
+    information supplied by third parties and on the condition of each vehicle at the time of sale.
+  </p>
+
+  <h2>1. Pricing</h2>
+  <p>
+    Listed prices exclude taxes, title, registration, documentation fees, and any other dealer
+    charges unless expressly stated. Prices are subject to change without notice, and errors may be
+    corrected at any time. A price shown online is not a binding offer.
+  </p>
+
+  <h2>2. Availability</h2>
+  <p>
+    A vehicle shown on the Site may have been sold or reserved before the listing is updated. Please
+    confirm availability with us before travelling or making any decision.
+  </p>
+
+  <h2>3. Photographs and Descriptions</h2>
+  <p>
+    Photographs and colour renderings are representative. Equipment, trim, and options shown may not
+    be present on the specific vehicle offered. Where a vehicle has been modified (for example with
+    aftermarket wheels, body kits, or accessories), those modifications are described to the best of
+    our knowledge but may not be exhaustive.
+  </p>
+
+  <h2>4. History and Condition</h2>
+  <p>
+    Vehicle history information, such as CARFAX or similar reports, is provided by third parties and
+    is not independently verified by us. Vehicles are used and may have had prior accidents, damage,
+    repairs, or paintwork even where not described. We disclose known material history when we are
+    aware of it, but a clean history report is not a guarantee of a vehicle's condition.
+  </p>
+
+  <h2>5. Warranties</h2>
+  <p>
+    Unless a specific written warranty is provided for a vehicle, all used vehicles are sold
+    <strong>"as is."</strong> Any warranty description on this Site (including references to
+    warranty programs) is subject to the terms of the actual written warranty document, which is the
+    only source of warranty rights. The FTC Buyer's Guide posted on each used vehicle governs the
+    warranty status of that vehicle.
+  </p>
+
+  <h2>6. Odometer</h2>
+  <p>
+    Odometer readings are provided as required by federal law. We do not guarantee that a displayed
+    reading reflects the vehicle's total mileage, particularly where the odometer has been replaced,
+    is inoperative, or has reached its mechanical limits, unless a written odometer disclosure
+    states otherwise.
+  </p>
+
+  <h2>7. Service Estimates</h2>
+  <p>
+    Any service or repair estimate shown or quoted is preliminary and is based on a visual or
+    diagnostic inspection. Final pricing depends on the work actually required and authorised.
+  </p>
+
+  <h2>8. No Legal or Financial Advice</h2>
+  <p>
+    Nothing on this Site constitutes legal, tax, financial, or insurance advice. You are responsible
+    for obtaining independent professional advice regarding any vehicle purchase or finance
+    arrangement.
+  </p>
+
+  <h2>9. Questions</h2>
+  <p>
+    If you have questions about a specific listing, contact {site.name} at
+    <a href={`mailto:${site.email}`}>{site.email}</a> or <a href={site.phoneHref}>{site.phone}</a>.
+  </p>
+</LegalLayout>

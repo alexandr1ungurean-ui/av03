@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", Impact, ui-sans-serif, sans-serif;
+  --font-sans: "Bitter Variable", Georgia, "Times New Roman", serif;
+
+  /* Vintage Americana — warm parchment, burgundy, chrome */
+  --color-paper: #f3ebdd;
+  --color-cream: #faf5ec;
+  --color-ink: #231a14;
+  --color-muted: #6b5b4b;
+  --color-burgundy: #7a2b2b;
+  --color-burgundy-deep: #5e1f1f;
+  --color-chrome: #c8b9a0;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-burgundy);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-burgundy);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* tall condensed poster type */
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: 0.012em;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+
+  /* wide-tracked small caps label */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .container-x {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 78rem;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* catalog rule with a centred label */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .section-label::before,
+  .section-label::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background: var(--color-chrome);
+  }
+
+  /* white-framed photo, album style */
+  .frame {
+    background: #fff;
+    padding: 0.5rem;
+    border: 1px solid var(--color-chrome);
+  }
+
+  /* dealer window sticker / hang tag */
+  .tag {
+    background: var(--color-cream);
+    border: 1px solid var(--color-chrome);
+    box-shadow: 0 1px 0 var(--color-chrome);
+  }
+}
+
+/* ---------- Scroll reveal ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Paper grain ---------- */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,33 @@
+---
+interface Props {
+  type: 'sedan' | 'suv' | 'coupe' | 'classic';
+  class?: string;
+}
+
+const { type, class: className = '' } = Astro.props;
+
+const paths: Record<Props['type'], string> = {
+  sedan:
+    'M24 100 L24 74 Q26 62 42 56 L80 50 L100 34 Q150 24 200 32 L270 58 Q294 64 296 74 L296 100 Z',
+  suv: 'M24 102 L24 70 Q28 58 44 54 L84 50 L98 26 Q136 18 196 24 L256 46 Q286 54 296 60 L296 102 Z',
+  coupe:
+    'M24 100 L24 74 Q28 64 48 58 L96 52 L118 32 Q150 26 178 30 L262 60 Q290 66 296 72 L296 100 Z',
+  // long, low period profile with a hint of tail fin
+  classic:
+    'M16 102 L16 78 Q18 68 34 64 L92 55 L124 36 Q168 28 216 36 L274 55 Q302 61 305 71 L305 102 Z',
+};
+---
+
+<svg viewBox="0 0 320 140" class={className} fill="none" aria-hidden="true">
+  <path
+    d={paths[type]}
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+  />
+  <circle cx={type === 'classic' ? '76' : '78'} cy="108" r="21" stroke="currentColor" stroke-width="2.5" />
+  <circle cx={type === 'classic' ? '252' : '248'} cy="108" r="21" stroke="currentColor" stroke-width="2.5" />
+  <circle cx={type === 'classic' ? '76' : '78'} cy="108" r="7" stroke="currentColor" stroke-width="2" />
+  <circle cx={type === 'classic' ? '252' : '248'} cy="108" r="7" stroke="currentColor" stroke-width="2" />
+</svg>

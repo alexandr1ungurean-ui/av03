@@ -1,0 +1,135 @@
+---
+import { nav, site } from '../data/site';
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="fixed inset-x-0 top-0 z-40 bg-paper/95 backdrop-blur">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href="/" class="flex items-baseline gap-2">
+      <span class="display text-2xl leading-none text-ink md:text-3xl">{site.brandShort}</span>
+      <span class="display text-2xl leading-none text-burgundy md:text-3xl">{site.brandTail}</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'label transition-colors duration-200',
+              isActive(item.href)
+                ? 'text-burgundy underline decoration-chrome underline-offset-[6px]'
+                : 'text-ink/70 hover:text-burgundy',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <span class="label hidden text-muted xl:inline">Est. {site.established}</span>
+      <a
+        href="/contacts"
+        class="label hidden border border-ink px-4 py-2 text-ink transition-colors duration-200 hover:bg-ink hover:text-cream sm:inline-block"
+      >
+        Visit the shop
+      </a>
+      <button
+        id="menu-toggle"
+        class="flex h-9 w-9 flex-col items-center justify-center gap-1.5 border border-ink lg:hidden"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line block h-px w-4 bg-ink"></span>
+        <span class="menu-line block h-px w-4 bg-ink"></span>
+        <span class="menu-line block h-px w-4 bg-ink"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- double rule, newspaper style -->
+  <div class="h-px w-full bg-ink/25"></div>
+  <div class="h-[3px] w-full bg-ink"></div>
+
+  <!-- Mobile overlay -->
+  <div
+    id="mobile-menu"
+    class="pointer-events-none fixed inset-0 z-10 flex flex-col justify-end bg-ink px-6 pb-12 pt-32 opacity-0 transition-opacity duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+  >
+    <nav class="flex flex-col gap-3" aria-label="Mobile navigation">
+      {
+        nav.map((item, i) => (
+          <a
+            href={item.href}
+            class:list={[
+              'mobile-link display translate-y-5 text-4xl opacity-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]',
+              isActive(item.href) ? 'text-chrome' : 'text-cream',
+            ]}
+            style={`transition-delay:${70 + i * 55}ms`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a
+      href={site.phoneHref}
+      class="mobile-link label mt-10 translate-y-5 text-cream/70 opacity-0 transition-all delay-[480ms] duration-400"
+    >
+      {site.phone}
+    </a>
+  </div>
+</header>
+
+<style>
+  .menu-line {
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s ease;
+  }
+  #menu-toggle.is-open .menu-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  #menu-toggle.is-open .menu-line:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle.is-open .menu-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  #mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #mobile-menu.is-open .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.classList.toggle('is-open', open);
+      menu.classList.toggle('is-open', open);
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(!menu.classList.contains('is-open'));
+    });
+
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>

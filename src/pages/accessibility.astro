@@ -1,0 +1,54 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title="Accessibility Statement"
+  description={`${site.name} commitment to digital accessibility under the ADA and WCAG 2.2 AA.`}
+  eyebrow="Accessibility"
+>
+  <p>
+    {site.name} is committed to ensuring that our website is accessible to people with disabilities,
+    including users of screen readers and other assistive technologies. We aim to conform with the
+    Web Content Accessibility Guidelines (WCAG) 2.2 at the AA level.
+  </p>
+
+  <h2>Our Commitment</h2>
+  <p>
+    We treat accessibility as a part of quality. Our site is built on semantic HTML, supports
+    keyboard navigation, provides descriptive alternative text for images, maintains sufficient
+    colour contrast, and avoids content that requires a specific input method.
+  </p>
+
+  <h2>Ongoing Efforts</h2>
+  <p>
+    Accessibility is an ongoing effort. We periodically review the Site against WCAG 2.2 AA success
+    criteria and address issues as they are identified. We also design new content with
+    accessibility in mind.
+  </p>
+
+  <h2>Third-Party Content</h2>
+  <p>
+    Some content, such as embedded vehicle history reports or links to third-party sites, is
+    provided by others and may not fully meet our accessibility standards. We encourage you to
+    contact those providers directly with any access barriers.
+  </p>
+
+  <h2>Feedback</h2>
+  <p>
+    If you encounter an accessibility barrier on this Site, or have suggestions on how we can
+    improve, please contact us. We welcome your feedback and will do our best to respond and address
+    your concerns.
+  </p>
+  <ul>
+    <li>Email: <a href={`mailto:${site.email}`}>{site.email}</a></li>
+    <li>Phone: <a href={site.phoneHref}>{site.phone}</a></li>
+    <li>Address: {site.address}</li>
+  </ul>
+
+  <p>
+    When contacting us about an accessibility issue, please describe the page and the specific
+    problem so we can investigate promptly.
+  </p>
+</LegalLayout>

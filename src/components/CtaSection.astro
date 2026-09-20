@@ -1,0 +1,32 @@
+---
+import Button from './Button.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Find your golden era classic',
+  subtitle = 'Call or write to us — we will match you with the right car or book your restoration in.',
+} = Astro.props;
+---
+
+<section class="container-x py-20 md:py-28">
+  <div
+    data-reveal
+    class="border-[3px] border-burgundy-deep bg-burgundy px-6 py-16 text-center md:px-16 md:py-20"
+  >
+    <p class="eyebrow text-cream/75">Est. {site.established} · {site.address}</p>
+    <h2 class="display mx-auto mt-5 max-w-3xl text-4xl leading-none text-cream md:text-6xl">
+      {title}
+    </h2>
+    <div class="mx-auto mt-7 h-px w-24 bg-cream/40"></div>
+    <p class="mx-auto mt-7 max-w-md text-base leading-relaxed text-cream/85">{subtitle}</p>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <Button href="/contacts" variant="cream">Visit the shop</Button>
+      <Button href={site.phoneHref} variant="light" arrow={false}>Call us</Button>
+    </div>
+  </div>
+</section>

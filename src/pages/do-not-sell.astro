@@ -1,0 +1,64 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title="Do Not Sell or Share My Personal Information"
+  description="Your right under the California Consumer Privacy Act (CCPA/CPRA) to opt out of the sale or sharing of personal information."
+  eyebrow="Your Privacy Choices"
+>
+  <p>
+    Under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA),
+    California residents have the right to opt out of the "sale" and "sharing" of their personal
+    information. This page explains how {site.name} handles personal information and how to exercise
+    your rights.
+  </p>
+
+  <h2>Our Position</h2>
+  <div class="note">
+    <p>
+      <strong>{site.name} does not sell personal information</strong> for monetary consideration, and
+      <strong>does not share personal information</strong> for cross-context behavioural advertising.
+    </p>
+  </div>
+  <p>
+    Because we do not sell or share personal information as defined by the CCPA/CPRA, there is
+    nothing to opt out of. If this changes in the future, we will update this page and provide a
+    mechanism to exercise your opt-out right.
+  </p>
+
+  <h2>How to Submit a Request</h2>
+  <p>
+    You can still exercise your other CCPA/CPRA rights — including the right to know, correct, or
+    delete personal information — by contacting us:
+  </p>
+  <ul>
+    <li>Email: <a href={`mailto:${site.email}`}>{site.email}</a> (please use the subject "Privacy Request")</li>
+    <li>Phone: <a href={site.phoneHref}>{site.phone}</a></li>
+  </ul>
+
+  <h2>Verification</h2>
+  <p>
+    We may need to verify your identity before fulfilling a request, to protect your information
+    from unauthorised access. We will only use the information you provide for verification for that
+    purpose.
+  </p>
+
+  <h2>Authorised Agents</h2>
+  <p>
+    You may designate an authorised agent to submit a request on your behalf. We may require written
+    proof of the agent's authority and may verify your identity directly.
+  </p>
+
+  <h2>Non-Discrimination</h2>
+  <p>
+    We will not discriminate against you for exercising any privacy right, including by denying you
+    goods or services, charging different prices, or providing a different level of quality.
+  </p>
+
+  <p>
+    For more detail on how we collect and use personal information, see our
+    <a href="/privacy">Privacy Policy</a>.
+  </p>
+</LegalLayout>

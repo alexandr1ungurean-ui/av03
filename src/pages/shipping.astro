@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+
+const options = [
+  {
+    name: 'Enclosed transport',
+    price: 'from $1,450',
+    body: 'Hard-sided, single- or two-car enclosed trailer with soft straps over the tyres. The default choice for restored cars, convertibles and anything with fresh paint.',
+    best: 'Concours cars, fresh restorations, long distances',
+  },
+  {
+    name: 'Open transport',
+    price: 'from $750',
+    body: 'Standard multi-car carrier, fully insured, door-to-door or to the nearest terminal. Ideal for drivers and project cars where a little road dust is not a concern.',
+    best: 'Drivers, projects, regional moves',
+  },
+  {
+    name: 'Expedited delivery',
+    price: 'from $2,600',
+    body: 'Dedicated enclosed trailer, dedicated driver, no consolidating and no waiting for a full load. Typically collected within 72 hours of cleared payment.',
+    best: 'Time-critical sales, auctions, cross-country moves',
+  },
+];
+
+const steps = [
+  {
+    title: 'Agreement and deposit',
+    body: 'We confirm the sale in writing, agree the shipping method and collect a deposit. Nothing is booked until the paperwork is signed.',
+  },
+  {
+    title: 'Payment cleared in full',
+    body: 'The balance clears our account before a carrier is dispatched. Bank wire is preferred; certified funds are accepted.',
+  },
+  {
+    title: 'Car prepared and photographed',
+    body: 'The car is washed, fuelled to a quarter tank, battery tended, and photographed at every corner on the day of collection. Those photographs are emailed to you.',
+  },
+  {
+    title: 'Collection and transit',
+    body: 'The carrier inspects and signs for the car. You receive the driver name, carrier MC number, insurance certificate and an estimated delivery window.',
+  },
+  {
+    title: 'Delivery and inspection',
+    body: 'Walk the car with the driver before signing the bill of lading. Note anything at all on the delivery receipt — that is what the carrier insurance responds to.',
+  },
+  {
+    title: 'Titles and documents',
+    body: 'The signed title, bill of sale and any history file travel by insured courier, separately from the car, within three business days of cleared payment.',
+  },
+];
+
+const included = [
+  'Secure, insured transport by a licensed US carrier (MC/DOT registered)',
+  'Marine-grade cargo insurance to the agreed value of the vehicle',
+  'Photographic condition report taken at collection',
+  'Battery tended, tyres strapped — never chained — for the journey',
+  'Signed title, bill of sale and build file couriered separately',
+  'A named contact at the shop for the entire transit window',
+];
+
+const faq = [
+  {
+    q: 'How long does delivery take?',
+    a: 'Typically three to seven business days within the continental United States. Expedited delivery is usually two to four days. Alaska, Hawaii and international destinations take longer and are quoted individually.',
+  },
+  {
+    q: 'Who is responsible for the car during transit?',
+    a: 'The carrier, under its own cargo insurance, from the moment it signs for the car until you sign the delivery receipt. We coordinate the claim if anything goes wrong, but the carrier is the responsible party once the car is on the trailer.',
+  },
+  {
+    q: 'Can I collect the car in person?',
+    a: 'Yes, and we encourage it. Come to the shop, inspect the car at your leisure, and drive it home. We will have the paperwork ready and the tank filled.',
+  },
+  {
+    q: 'Do you ship outside the United States?',
+    a: 'We do. We work with export agents for Europe, the UK, the Gulf and Australia, and can handle container loading and export documentation. Import duties and local registration are the buyer\u2019s responsibility.',
+  },
+  {
+    q: 'What if the car is not as described?',
+    a: 'It will be, and you will have seen dozens of photographs before it shipped. If a material discrepancy exists, contact us before you sign the delivery receipt and we will resolve it.',
+  },
+];
+
+const terms = [
+  'Shipping is arranged at the buyer\u2019s instruction and cost. Quoted prices are estimates and may change with fuel surcharges, distance or access restrictions.',
+  'The balance of the purchase price must clear before dispatch. Vehicles are held free of charge for ten calendar days after cleared payment.',
+  'Delivery dates are estimates given by the carrier. We do not guarantee a delivery date and are not liable for delay caused by weather, traffic, mechanical failure or carrier scheduling.',
+  'Damage must be noted on the carrier\u2019s bill of lading at delivery and photographed. Claims not noted at delivery are difficult to pursue and may be denied by the carrier.',
+  'The buyer is responsible for any storage charges, duties, taxes or registration fees arising after delivery.',
+];
+---
+
+<BaseLayout
+  title="Shipping"
+  description={`Nationwide classic car shipping from ${site.name} — enclosed and open transport, dedicated expedited delivery, licensed and insured carriers, worldwide export.`}
+>
+  <section class="container-x pb-12 pt-28 md:pt-36">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Delivery</span>
+    </div>
+    <h1 data-reveal class="display mt-8 text-5xl text-ink md:text-7xl">Shipping &amp; delivery</h1>
+    <p data-reveal style="--reveal-delay: 60ms" class="mt-5 max-w-2xl text-base leading-relaxed text-ink/75">
+      We ship American classics across the country and around the world every month. Every load goes
+      on a licensed, insured carrier, and every car is photographed before it leaves the yard.
+    </p>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        options.map((option, i) => (
+          <article data-reveal style={`--reveal-delay: ${i * 60}ms`} class="tag flex flex-col p-7">
+            <div class="flex items-baseline justify-between gap-4 border-b border-chrome pb-3">
+              <h2 class="display text-2xl text-ink">{option.name}</h2>
+            </div>
+            <p class="display mt-4 text-xl text-burgundy">{option.price}</p>
+            <p class="mt-4 flex-1 text-sm leading-relaxed text-ink/75">{option.body}</p>
+            <p class="label mt-5 border-t border-chrome pt-4 text-muted">{option.best}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="mt-6 text-xs leading-relaxed text-muted">
+      Prices are typical ranges for continental US delivery of a standard-size classic. Exact quotes
+      depend on distance, access and timing — call {site.phone} for a firm figure.
+    </p>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">How a delivery runs</span>
+    </div>
+    <ol class="mt-10 divide-y divide-chrome border-y border-chrome">
+      {
+        steps.map((step, i) => (
+          <li
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 50}ms`}
+            class="grid grid-cols-1 gap-4 py-7 md:grid-cols-12 md:items-baseline md:gap-8"
+          >
+            <span class="display text-3xl text-muted md:col-span-2">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="display text-2xl text-ink md:col-span-4 md:text-3xl">{step.title}</h3>
+            <p class="text-base leading-relaxed text-ink/75 md:col-span-6">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Included in every shipment</span>
+    </div>
+    <ul class="mt-10 grid grid-cols-1 gap-x-12 border-t border-chrome md:grid-cols-2">
+      {
+        included.map((item) => (
+          <li class="flex items-start gap-4 border-b border-chrome py-4 text-sm leading-relaxed text-ink/80">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-burgundy"></span>
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="grid grid-cols-1 gap-10 border-[3px] border-ink bg-cream p-8 md:grid-cols-12 md:p-12">
+      <div class="md:col-span-4">
+        <p class="label text-burgundy">Worldwide</p>
+        <h2 class="display mt-4 text-3xl leading-none text-ink md:text-4xl">
+          Export and international delivery
+        </h2>
+      </div>
+      <div class="space-y-4 text-base leading-relaxed text-ink/80 md:col-span-8">
+        <p>
+          Roughly a third of the cars we sell leave the country. We work with export agents in
+          Detroit, Newark and Savannah to load cars into shared or sole-use containers, and we
+          prepare the documentation the receiving port will ask for: title, bill of sale, export
+          declaration and a photographic condition report.
+        </p>
+        <p>
+          Buyers are responsible for import duty, VAT or GST, customs clearance and local
+          registration in the destination country. We will tell you plainly what the car will need
+          before you commit, and we will not ship to a port we cannot document properly.
+        </p>
+        <div class="pt-2">
+          <Button href="/contacts" variant="ghost">Request an export quote</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Shipping questions</span>
+    </div>
+    <div class="mt-10 border-t border-chrome">
+      {
+        faq.map((item) => (
+          <details class="group border-b border-chrome py-5">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 list-none">
+              <span class="display text-xl text-ink md:text-2xl">{item.q}</span>
+              <span
+                class="shrink-0 text-2xl leading-none text-burgundy transition-transform duration-200 group-open:rotate-45"
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </summary>
+            <p class="mt-4 max-w-3xl text-base leading-relaxed text-ink/75">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container-x pb-20 md:pb-24">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Shipping terms</span>
+    </div>
+    <ul class="mt-10 max-w-3xl space-y-4">
+      {
+        terms.map((term) => (
+          <li class="flex items-start gap-4 text-sm leading-relaxed text-ink/75">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-burgundy"></span>
+            {term}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-8 text-sm text-muted">
+      These terms sit alongside our <a href="/terms" class="text-burgundy underline underline-offset-2">Terms of Service</a>.
+    </p>
+  </section>
+
+  <CtaSection
+    title="Need a quote to your door?"
+    subtitle="Tell us where the car is going and when you need it there. We will come back with a firm figure and a carrier."
+  />
+</BaseLayout>

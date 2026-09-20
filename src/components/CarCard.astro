@@ -1,0 +1,75 @@
+---
+import type { Car } from '../data/cars';
+import { formatPrice } from '../data/cars';
+import CarSilhouette from './CarSilhouette.astro';
+import SpecIcon from './SpecIcon.astro';
+import { cardVariant, cardAvifVariant } from '../utils/images';
+
+interface Props {
+  car: Car;
+  /** heading level for the car name — 3 under a section h2, 2 when cards are top-level */
+  headingLevel?: 2 | 3;
+  /** lot number shown on the tag, e.g. "01" */
+  lot?: string;
+}
+
+const { car, headingLevel = 3, lot } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+const mileage = car.mileage.toLocaleString('en-US');
+const photo = car.images?.[0];
+const cardPhoto = photo ? cardVariant(photo) : undefined;
+const cardAvif = photo ? cardAvifVariant(photo) : undefined;
+---
+
+<a href={`/cars/${car.slug}`} class="group block">
+  <article class="tag p-3 transition-transform duration-200 group-hover:-translate-y-0.5">
+    <div class="flex items-center justify-between gap-3 border-b border-chrome pb-2">
+      <span class="label text-muted">{car.body}</span>
+      {lot && <span class="label text-burgundy">Lot {lot}</span>}
+    </div>
+
+    <div class="frame mt-3">
+      <div class="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-paper">
+        {
+          photo ? (
+            <picture class="contents">
+              <source type="image/avif" srcset={cardAvif} />
+              <img
+                src={cardPhoto}
+                alt={`${car.brand} ${car.model}`}
+                loading="lazy"
+                fetchpriority="low"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+            </picture>
+          ) : (
+            <CarSilhouette type={car.silhouette} class="h-20 w-auto text-ink/50 md:h-24" />
+          )
+        }
+      </div>
+    </div>
+
+    <Heading class="display mt-3 text-2xl leading-none text-ink">
+      {car.brand} {car.model}
+    </Heading>
+
+    <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+      <span class="inline-flex items-center gap-1.5">
+        <SpecIcon name="year" class="h-3.5 w-3.5 shrink-0" />
+        {car.year}
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <SpecIcon name="mileage" class="h-3.5 w-3.5 shrink-0" />
+        {mileage} mi
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <SpecIcon name="drive" class="h-3.5 w-3.5 shrink-0" />
+        {car.drive}
+      </span>
+    </div>
+
+    <p class="display mt-3 border-t border-chrome pt-3 text-xl text-burgundy">
+      {formatPrice(car.price)}
+    </p>
+  </article>
+</a>

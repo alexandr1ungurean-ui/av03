@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { site } from '../data/site';
+
+const bring = [
+  'The year, make and model you are chasing — or the VIN if you already own the car',
+  'Photographs of the car from all four corners, plus the engine bay and interior',
+  'Any history you have: titles, build sheets, receipts, previous restoration invoices',
+  'What you want the car to be when it is finished — a driver, a show car, or an investment',
+];
+
+const faq = [
+  {
+    q: 'Do you buy cars outright?',
+    a: 'Yes. Send photographs and the history, and we will make an offer within two business days. We also take cars on consignment if you would rather wait for the right buyer.',
+  },
+  {
+    q: 'Can I have a car inspected before I buy?',
+    a: 'Absolutely — bring your own inspector or mechanic, or send a third-party service. We will put the car on a lift and answer every question. We would rather lose a sale than surprise a buyer.',
+  },
+  {
+    q: 'Do you work on cars you did not sell?',
+    a: 'We do, subject to bench availability. Restoration slots are typically booked two to three months out.',
+  },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description={`Contact ${site.name} by phone or email. Call during opening hours or write to us and we will reply within one business day.`}
+>
+  <section class="container-x pb-12 pt-28 md:pt-36">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Visit · Call · Write</span>
+    </div>
+    <h1 data-reveal class="display mt-8 text-5xl text-ink md:text-7xl">Get in touch</h1>
+    <p data-reveal style="--reveal-delay: 60ms" class="mt-5 max-w-xl text-base leading-relaxed text-ink/75">
+      The shop is on Michigan Avenue, five minutes from the old assembly plants. Call ahead if you
+      want a specific car pulled out for you.
+    </p>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div data-reveal class="tag flex flex-col p-7">
+        <p class="label text-muted">Telephone</p>
+        <a
+          href={site.phoneHref}
+          class="display mt-4 block text-2xl text-ink transition-colors duration-200 hover:text-burgundy md:text-3xl"
+        >
+          {site.phone}
+        </a>
+        <p class="mt-4 text-sm text-muted">{site.hours}</p>
+        <p class="mt-auto pt-6 text-sm leading-relaxed text-ink/70">
+          The fastest way to reach us. Ask for the sales desk for a car, or the workshop for
+          restoration scheduling.
+        </p>
+      </div>
+
+      <div data-reveal style="--reveal-delay: 60ms" class="tag flex flex-col p-7">
+        <p class="label text-muted">Email</p>
+        <a
+          href={`mailto:${site.email}`}
+          class="mt-4 block break-words text-lg font-medium text-ink transition-colors duration-200 hover:text-burgundy md:text-xl"
+        >
+          {site.email}
+        </a>
+        <p class="mt-4 text-sm text-muted">Replies within one business day</p>
+        <p class="mt-auto pt-6 text-sm leading-relaxed text-ink/70">
+          Best for photographs, VINs and build files. Attach as many images as you like — we look at
+          all of them.
+        </p>
+      </div>
+
+      <div data-reveal style="--reveal-delay: 120ms" class="tag flex flex-col p-7">
+        <p class="label text-muted">The shop</p>
+        <p class="display mt-4 break-words text-2xl leading-tight text-ink md:text-3xl">
+          {site.address}
+        </p>
+        <p class="mt-4 text-sm text-muted">{site.hours}</p>
+        <p class="mt-auto pt-6 text-sm leading-relaxed text-ink/70">
+          Free parking in the yard. Visitors are welcome to walk the floor and look underneath any
+          car on it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Before you write</span>
+    </div>
+    <div class="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="lg:col-span-5">
+        <p class="text-base leading-relaxed text-ink/80">
+          We answer every message ourselves, so a little detail up front saves a week of back and
+          forth. If you can, include the following:
+        </p>
+      </div>
+      <ul class="lg:col-span-7">
+        {
+          bring.map((item) => (
+            <li class="flex items-start gap-4 border-b border-chrome py-4 text-sm leading-relaxed text-ink/80">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-burgundy"></span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-x pb-20 md:pb-24">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Common questions</span>
+    </div>
+    <div class="mt-10 border-t border-chrome">
+      {
+        faq.map((item) => (
+          <details class="group border-b border-chrome py-5">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 list-none">
+              <span class="display text-xl text-ink md:text-2xl">{item.q}</span>
+              <span
+                class="shrink-0 text-2xl leading-none text-burgundy transition-transform duration-200 group-open:rotate-45"
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </summary>
+            <p class="mt-4 max-w-3xl text-base leading-relaxed text-ink/75">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaSection
+    title="Talk to the workshop"
+    subtitle="Whether it is a car you want to buy, sell or restore, one call is usually enough to know where you stand."
+  />
+</BaseLayout>

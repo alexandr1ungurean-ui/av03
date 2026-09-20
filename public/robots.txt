@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://av03.pages.dev/sitemap-index.xml

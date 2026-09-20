@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { services } from '../data/site';
+---
+
+<BaseLayout
+  title="Restoration"
+  description="Concours-level classic car restoration: full restorations, engine and drivetrain rebuilds, paint, chrome, interiors and appraisals."
+>
+  <section class="container-x pb-12 pt-28 md:pt-36">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">The Workshop</span>
+    </div>
+    <h1 data-reveal class="display mt-8 text-5xl text-ink md:text-7xl">Restoration &amp; Service</h1>
+    <p data-reveal style="--reveal-delay: 60ms" class="mt-5 max-w-xl text-base leading-relaxed text-ink/75">
+      Frame-off restorations, mechanical rebuilds and trim work — carried out by marque specialists
+      and documented from the first photograph to the last invoice.
+    </p>
+  </section>
+
+  <section class="container-x pb-20 md:pb-28">
+    <div class="divide-y divide-chrome border-y border-chrome">
+      {
+        services.map((service, i) => (
+          <article
+            id={service.slug}
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 60}ms`}
+            class="grid grid-cols-1 gap-5 py-8 md:grid-cols-12 md:items-start md:gap-8 md:py-12"
+          >
+            <div class="flex items-center gap-4 md:col-span-3">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center border border-chrome text-burgundy">
+                <ServiceIcon slug={service.slug} class="h-6 w-6" />
+              </span>
+              <span class="display text-3xl text-muted">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <div class="md:col-span-6">
+              <h2 class="display text-3xl text-ink md:text-4xl">{service.title}</h2>
+              <p class="mt-3 max-w-lg text-base leading-relaxed text-ink/75">{service.description}</p>
+            </div>
+            <div class="flex flex-col items-start gap-3 md:col-span-3 md:items-end">
+              <p class="label text-burgundy">{service.price}</p>
+              <a
+                href="/contacts"
+                class="label group inline-flex items-center gap-2 text-ink transition-colors duration-200 hover:text-burgundy"
+              >
+                Book in
+                <span class="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaSection
+    title="Start your restoration"
+    subtitle="Send us photographs and the car's history — we will come back with an honest assessment and a written estimate."
+  />
+</BaseLayout>

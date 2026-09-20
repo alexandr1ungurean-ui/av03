@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import CarCard from '../../components/CarCard.astro';
+import CarSilhouette from '../../components/CarSilhouette.astro';
+import SpecIcon from '../../components/SpecIcon.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import { cars, formatPrice } from '../../data/cars';
+import type { Car } from '../../data/cars';
+import { avifVariant } from '../../utils/images';
+import type { SpecIconName } from '../../utils/icons';
+
+export function getStaticPaths() {
+  return cars.map((car) => ({ params: { slug: car.slug }, props: { car } }));
+}
+
+const { car } = Astro.props as { car: Car };
+const related = cars.filter((c) => c.slug !== car.slug).slice(0, 3);
+const mileage = car.mileage.toLocaleString('en-US');
+const gallery = car.images ?? [];
+const heroAvif = gallery.length > 0 ? avifVariant(gallery[0]) : undefined;
+
+interface Spec {
+  icon: SpecIconName;
+  label: string;
+  value: string;
+}
+
+const specs: Spec[] = (
+  [
+    { icon: 'year', label: 'Year', value: String(car.year) },
+    { icon: 'body', label: 'Body', value: car.body },
+    { icon: 'engine', label: 'Engine', value: car.engine },
+    { icon: 'transmission', label: 'Transmission', value: car.transmission },
+    { icon: 'drive', label: 'Drivetrain', value: car.drive },
+    { icon: 'mileage', label: 'Mileage', value: `${mileage} mi` },
+    { icon: 'fuel', label: 'Fuel', value: car.fuel },
+    { icon: 'color', label: 'Color', value: car.color },
+    { icon: 'door', label: 'Doors', value: car.doors ? `${car.doors} Doors` : '' },
+    { icon: 'cylinder', label: 'Cylinders', value: car.cylinders ? String(car.cylinders) : '' },
+    { icon: 'condition', label: 'Condition', value: car.condition ?? '' },
+    { icon: 'vin', label: 'VIN', value: car.vin ?? '' },
+  ] as Spec[]
+).filter((spec) => spec.value !== '');
+---
+
+<BaseLayout title={`${car.year} ${car.brand} ${car.model}`} description={car.description}>
+  {
+    gallery.length > 0 && (
+      <link
+        slot="head"
+        rel="preload"
+        as="image"
+        type="image/avif"
+        href={heroAvif}
+        fetchpriority="high"
+      />
+    )
+  }
+
+  <section class="container-x pb-12 pt-28 md:pt-36">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">{car.body} · {car.year}</span>
+    </div>
+    <h1 data-reveal class="display mt-8 max-w-4xl text-5xl text-ink md:text-7xl">
+      {car.brand} {car.model}
+    </h1>
+    <p data-reveal style="--reveal-delay: 60ms" class="display mt-5 text-3xl text-burgundy md:text-4xl">
+      {formatPrice(car.price)}
+    </p>
+  </section>
+
+  <section class="container-x pb-16 md:pb-20">
+    <div data-reveal class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+      <figure class="lg:col-span-8">
+        <div class="frame">
+          <div class="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-paper">
+            {
+              gallery.length > 0 ? (
+                <picture class="contents">
+                  <source type="image/avif" srcset={heroAvif} />
+                  <img
+                    id="hero-image"
+                    src={gallery[0]}
+                    alt={`${car.year} ${car.brand} ${car.model}`}
+                    fetchpriority="high"
+                    class="absolute inset-0 h-full w-full object-cover"
+                  />
+                </picture>
+              ) : (
+                <CarSilhouette type={car.silhouette} class="h-28 w-auto text-ink/45 md:h-40" />
+              )
+            }
+          </div>
+        </div>
+        <figcaption class="label mt-3 text-center text-muted">
+          {car.year} {car.brand} {car.model} · {car.color}
+        </figcaption>
+      </figure>
+
+      <div class="lg:col-span-4">
+        <div class="tag p-6">
+          <p class="label text-muted">At a glance</p>
+          <dl class="mt-5 space-y-3">
+            {
+              specs.slice(0, 6).map((spec) => (
+                <div class="flex items-start gap-3 border-b border-chrome pb-3">
+                  <SpecIcon name={spec.icon} class="mt-0.5 h-4 w-4 shrink-0 text-burgundy" />
+                  <dt class="w-28 shrink-0 text-xs uppercase tracking-[0.14em] text-muted">{spec.label}</dt>
+                  <dd class="min-w-0 flex-1 text-sm font-medium text-ink">{spec.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <div class="mt-6 flex flex-col gap-3">
+            <Button href="/contacts">Enquire about this car</Button>
+            <Button href="/shipping" variant="ghost" arrow={false}>Shipping &amp; delivery</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    gallery.length > 1 && (
+      <section class="container-x pb-16">
+        <div class="grid grid-cols-2 gap-5 md:grid-cols-4">
+          {gallery.slice(1).map((img, i) => (
+            <div class="frame" data-reveal style={`--reveal-delay: ${i * 50}ms`}>
+              <div class="relative aspect-[4/3] overflow-hidden bg-paper">
+                <img
+                  src={img}
+                  alt={`${car.brand} ${car.model} photograph ${i + 2}`}
+                  loading="lazy"
+                  class="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="container-x pb-16">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">The Story</span>
+    </div>
+    <p data-reveal class="mx-auto mt-10 max-w-3xl text-lg leading-relaxed text-ink/80">
+      {car.description}
+    </p>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Specifications</span>
+    </div>
+    <dl data-reveal class="mt-10 grid grid-cols-1 gap-x-12 border-t border-chrome sm:grid-cols-2">
+      {
+        specs.map((spec) => (
+          <div class="flex items-center gap-3 border-b border-chrome py-4">
+            <SpecIcon name={spec.icon} class="h-5 w-5 shrink-0 text-burgundy" />
+            <dt class="w-32 shrink-0 text-xs uppercase tracking-[0.14em] text-muted">{spec.label}</dt>
+            <dd class="min-w-0 flex-1 text-sm font-medium text-ink">{spec.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  {
+    car.features && car.features.length > 0 && (
+      <section class="container-x pb-16">
+        <div class="section-label">
+          <span class="label shrink-0 text-muted">Equipment</span>
+        </div>
+        <ul class="mt-10 grid grid-cols-1 gap-x-10 border-t border-chrome sm:grid-cols-2 lg:grid-cols-3">
+          {car.features.map((feature, i) => (
+            <li
+              data-reveal
+              style={`--reveal-delay: ${(i % 6) * 40}ms`}
+              class="flex items-center gap-3 border-b border-chrome py-3.5 text-sm text-ink/80"
+            >
+              <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-burgundy"></span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    related.length > 0 && (
+      <section class="container-x pb-20 md:pb-24">
+        <div class="section-label">
+          <span class="label shrink-0 text-muted">More from the floor</span>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {related.map((c, i) => (
+            <div data-reveal style={`--reveal-delay: ${i * 60}ms`}>
+              <CarCard car={c} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <CtaSection />
+</BaseLayout>

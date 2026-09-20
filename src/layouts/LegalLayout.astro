@@ -1,0 +1,87 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  updated?: string;
+  /** short label above the title */
+  eyebrow?: string;
+}
+
+const { title, description, updated = 'September 20, 2026', eyebrow = 'Legal' } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="container-x pb-24 pt-28 md:pb-32 md:pt-36">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">{eyebrow}</span>
+    </div>
+    <h1 class="display mt-8 max-w-3xl text-4xl text-ink md:text-6xl">{title}</h1>
+    <p class="label mt-5 text-muted">Last updated: {updated}</p>
+    <div class="legal-prose mt-12 max-w-3xl">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .legal-prose h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--color-ink);
+    margin-top: 2.5rem;
+    margin-bottom: 0.85rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-chrome);
+  }
+  .legal-prose h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .legal-prose h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .legal-prose p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: rgb(35 26 20 / 0.78);
+  }
+  .legal-prose ul {
+    margin: 0 0 1.15rem 1.15rem;
+    list-style: disc;
+  }
+  .legal-prose li {
+    margin-bottom: 0.5rem;
+    line-height: 1.75;
+    color: rgb(35 26 20 / 0.78);
+  }
+  .legal-prose strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .legal-prose a {
+    color: var(--color-burgundy);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-prose a:hover {
+    color: var(--color-burgundy-deep);
+  }
+  .legal-prose .note {
+    border: 1px solid var(--color-ink);
+    background: var(--color-cream);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .legal-prose .note p:last-child {
+    margin-bottom: 0;
+  }
+</style>

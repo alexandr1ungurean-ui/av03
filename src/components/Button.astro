@@ -1,0 +1,39 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost' | 'dark' | 'light' | 'cream';
+  arrow?: boolean;
+}
+
+const { href, variant = 'primary', arrow = true } = Astro.props;
+
+const base =
+  'label group inline-flex items-center gap-3 border px-6 py-3 transition-colors duration-200 active:translate-y-px';
+
+const variants = {
+  primary: 'border-burgundy bg-burgundy text-cream hover:bg-burgundy-deep hover:border-burgundy-deep',
+  ghost: 'border-ink text-ink hover:bg-ink hover:text-cream',
+  dark: 'border-ink bg-ink text-cream hover:bg-muted hover:border-muted',
+  light: 'border-cream/60 text-cream hover:bg-cream/10',
+  cream: 'border-cream bg-cream text-burgundy hover:bg-paper hover:border-paper',
+} as const;
+
+const selected = variants[variant];
+---
+
+<a href={href} class={`${base} ${selected}`}>
+  <slot />
+  {
+    arrow && (
+      <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
+        <path
+          d="M4 12h15M13 6l6 6-6 6"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    )
+  }
+</a>

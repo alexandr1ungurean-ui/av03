@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import CarCard from '../components/CarCard.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { cars } from '../data/cars';
+
+const bodies = ['All', 'Coupe', 'Convertible', 'Hardtop', 'Muscle Car', 'Sedan', 'Wagon', 'Pickup'] as const;
+---
+
+<BaseLayout
+  title="Inventory"
+  description="Classic American cars for sale — coupes, convertibles, hardtops and muscle cars with documented history."
+>
+  <section class="container-x pb-12 pt-28 md:pt-36">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Inventory</span>
+    </div>
+    <h1 data-reveal class="display mt-8 text-5xl text-ink md:text-7xl">Cars for Sale</h1>
+    <p data-reveal style="--reveal-delay: 60ms" class="mt-5 max-w-xl text-base leading-relaxed text-ink/75">
+      Every car on the floor is inspected, driven and documented before it is listed. What you read
+      here is what is in the garage.
+    </p>
+  </section>
+
+  <section class="container-x pb-20 md:pb-28">
+    {
+      cars.length > 0 ? (
+        <>
+          <div data-reveal class="flex flex-wrap gap-2" role="group" aria-label="Filter by body style">
+            {bodies.map((body) => (
+              <button
+                type="button"
+                class:list={[
+                  'filter-btn label border border-ink px-4 py-2 transition-colors duration-200',
+                  body === 'All' ? 'active' : 'text-ink/70 hover:bg-ink hover:text-cream',
+                ]}
+                data-filter={body === 'All' ? 'all' : body}
+              >
+                {body}
+              </button>
+            ))}
+          </div>
+
+          <div id="car-grid" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {cars.map((car, i) => (
+              <div class="car-item" data-body={car.body}>
+                <CarCard car={car} headingLevel={2} lot={String(i + 1).padStart(2, '0')} />
+              </div>
+            ))}
+          </div>
+
+          <p id="car-empty" class="hidden py-20 text-center text-ink/60">
+            Nothing on the floor matches that body style.
+          </p>
+        </>
+      ) : (
+        <div data-reveal class="tag px-8 py-14 text-center">
+          <p class="display text-3xl text-ink md:text-4xl">Cars arriving soon</p>
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink/70">
+            We are cataloguing our current stock. Call or write and we will tell you what is on the
+            floor this week.
+          </p>
+          <div class="mt-8 flex justify-center">
+            <Button href="/contacts">Get in touch</Button>
+          </div>
+        </div>
+      )
+    }
+  </section>
+
+  <CtaSection
+    title="Looking for something specific?"
+    subtitle="Tell us the year, the marque and the body style — we will source it and inspect it before you commit."
+  />
+</BaseLayout>
+
+<style>
+  .filter-btn.active {
+    background: var(--color-burgundy);
+    color: var(--color-cream);
+    border-color: var(--color-burgundy);
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.car-item');
+  const empty = document.getElementById('car-empty');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let visible = 0;
+
+      items.forEach((item) => {
+        const show = filter === 'all' || item.dataset.body === filter;
+        item.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      });
+
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>

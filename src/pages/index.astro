@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import CarCard from '../components/CarCard.astro';
+import CarSilhouette from '../components/CarSilhouette.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { cars, featuredCars } from '../data/cars';
+import { services, stats, testimonials, site } from '../data/site';
+import { avifVariant, cardVariant } from '../utils/images';
+
+const credentials = [
+  { title: 'Documented history', text: 'Every car is sold with its paperwork, title history and a photographic record.' },
+  { title: 'Concours workmanship', text: 'Correct fasteners, period finishes and marque specialists on every restoration.' },
+  { title: 'Pre-purchase inspection', text: 'Independent inspections welcome, and we put our own report in writing.' },
+  { title: 'Worldwide shipping', text: 'Enclosed transport arranged door to door, fully insured, anywhere.' },
+];
+
+const marques = ['Ford', 'Chevrolet', 'Pontiac', 'Dodge', 'Plymouth', 'Buick', 'Cadillac', 'Oldsmobile', 'Studebaker', 'Packard'];
+
+const heroCar =
+  featuredCars.length > 0 ? [...featuredCars].sort((a, b) => b.price - a.price)[0] : undefined;
+const heroPhoto = heroCar?.images?.[0];
+const heroAvif = heroPhoto ? avifVariant(heroPhoto) : undefined;
+const heroPreload = heroPhoto ? heroAvif : '/hero.jpg';
+const heroPreloadType = heroPhoto ? 'image/avif' : 'image/jpeg';
+
+const gallery = cars
+  .flatMap((car) => (car.images ?? []).map((img) => ({ img, car })))
+  .slice(0, 8);
+
+const galleryPlaceholders = [
+  'Coupes',
+  'Hardtops',
+  'Convertibles',
+  'Muscle Cars',
+  'Station Wagons',
+  'Pickups',
+  'Chrome & Trim',
+  'Interiors',
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Classic American car sales, restoration and service. Hand-picked vintage vehicles with documented history and concours-level workmanship."
+>
+  <link slot="head" rel="preload" as="image" type={heroPreloadType} href={heroPreload} fetchpriority="high" />
+
+  <!-- ================= HERO ================= -->
+  <section class="pt-28 md:pt-36">
+    <div class="container-x">
+      <div class="section-label">
+        <span class="label shrink-0 text-muted">Est. {site.established} · Detroit, Michigan</span>
+      </div>
+
+      <h1 data-reveal class="display mt-8 text-center text-[clamp(3rem,11vw,8rem)] text-ink">
+        American Classics
+      </h1>
+      <p data-reveal style="--reveal-delay: 60ms" class="eyebrow mt-4 text-center text-burgundy">
+        Sales · Restoration · Service
+      </p>
+
+      <p
+        data-reveal
+        style="--reveal-delay: 120ms"
+        class="mx-auto mt-8 max-w-xl text-center text-lg leading-relaxed text-ink/75"
+      >
+        Hand-picked vintage American cars with documented history — restored and serviced in our own
+        Detroit workshop.
+      </p>
+
+      <div data-reveal style="--reveal-delay: 180ms" class="mt-10 flex flex-wrap justify-center gap-4">
+        <Button href="/catalog">Browse the collection</Button>
+        <Button href="/services" variant="ghost">Restoration services</Button>
+      </div>
+    </div>
+
+    <!-- framed hero photograph -->
+    <div data-reveal style="--reveal-delay: 220ms" class="container-x mt-14">
+      <figure>
+        <a
+          href={heroCar ? `/cars/${heroCar.slug}` : '/catalog'}
+          aria-label={heroCar
+            ? `${heroCar.year} ${heroCar.brand} ${heroCar.model} — view details`
+            : 'Browse the collection'}
+          class="frame block"
+        >
+          <div class="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-paper md:aspect-[16/9]">
+            {
+              heroPhoto ? (
+                <picture class="contents">
+                  <source type="image/avif" srcset={heroAvif} />
+                  <img
+                    src={heroPhoto}
+                    alt={heroCar ? `${heroCar.brand} ${heroCar.model}` : `${site.name} showroom`}
+                    fetchpriority="high"
+                    class="absolute inset-0 h-full w-full object-cover"
+                  />
+                </picture>
+              ) : (
+                <>
+                  <img
+                    src="/hero.jpg"
+                    alt=""
+                    aria-hidden="true"
+                    fetchpriority="high"
+                    class="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <CarSilhouette
+                    type="classic"
+                    class="relative h-24 w-auto text-burgundy/70 md:h-36"
+                  />
+                </>
+              )
+            }
+          </div>
+        </a>
+        <figcaption class="label mt-3 text-center text-muted">
+          {heroCar ? `${heroCar.year} ${heroCar.brand} ${heroCar.model} — in the collection` : 'The collection — arriving soon'}
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- spec panel -->
+    <div class="container-x mt-12">
+      <div class="grid grid-cols-2 gap-px border-2 border-ink bg-chrome md:grid-cols-4">
+        {
+          stats.map((stat, i) => (
+            <div data-reveal style={`--reveal-delay: ${i * 60}ms`} class="bg-paper px-4 py-6 text-center">
+              <p class="display text-3xl text-ink md:text-4xl">{stat.value}</p>
+              <p class="label mt-2 text-muted">{stat.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE COLLECTION ================= -->
+  {
+    featuredCars.length > 0 ? (
+      <section class="container-x py-20 md:py-28">
+        <div class="section-label">
+          <span class="label shrink-0 text-muted">The Collection</span>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredCars.map((car, i) => (
+            <div data-reveal style={`--reveal-delay: ${(i % 3) * 70}ms`}>
+              <CarCard car={car} lot={String(i + 1).padStart(2, '0')} />
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <Button href="/catalog" variant="ghost">See every car</Button>
+        </div>
+      </section>
+    ) : (
+      <section class="container-x py-20 md:py-28">
+        <div class="section-label">
+          <span class="label shrink-0 text-muted">The Collection</span>
+        </div>
+        <div class="tag mt-12 px-8 py-14 text-center">
+          <p class="display text-3xl text-ink md:text-4xl">Cars arriving soon</p>
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink/70">
+            We are cataloguing our current stock. Call or write and we will tell you what is on the
+            floor this week.
+          </p>
+          <div class="mt-8 flex justify-center">
+            <Button href="/contacts">Get in touch</Button>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ================= RESTORATION PRICE LIST ================= -->
+  <section class="container-x py-20 md:py-28">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Restoration &amp; Service</span>
+    </div>
+
+    <div class="mt-12 divide-y divide-chrome border-y border-chrome">
+      {
+        services.map((service, i) => (
+          <a
+            href={`/services#${service.slug}`}
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 60}ms`}
+            class="group flex flex-col gap-4 py-6 transition-colors duration-200 hover:bg-cream sm:flex-row sm:items-center sm:gap-6"
+          >
+            <span class="display w-10 shrink-0 text-2xl text-muted">{String(i + 1).padStart(2, '0')}</span>
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center border border-chrome text-burgundy">
+              <ServiceIcon slug={service.slug} class="h-5 w-5" />
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="display block text-2xl leading-none text-ink transition-colors duration-200 group-hover:text-burgundy">
+                {service.title}
+              </span>
+              <span class="mt-2 block text-sm leading-relaxed text-ink/70">{service.description}</span>
+            </span>
+            <span class="label shrink-0 text-burgundy sm:text-right">{service.price}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ================= ARCHIVE GALLERY ================= -->
+  <section class="container-x py-20 md:py-28">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">From the Archive</span>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-5 md:grid-cols-4">
+      {
+        gallery.length > 0
+          ? gallery.map((item, i) => (
+              <a href={`/cars/${item.car.slug}`} data-reveal style={`--reveal-delay: ${(i % 4) * 60}ms`} class="frame group block">
+                <div class="relative aspect-[4/3] overflow-hidden bg-paper">
+                  <img
+                    src={cardVariant(item.img)}
+                    alt={`${item.car.brand} ${item.car.model}`}
+                    loading="lazy"
+                    fetchpriority="low"
+                    class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <p class="label mt-2 truncate text-center text-muted">
+                  {item.car.year} {item.car.brand}
+                </p>
+              </a>
+            ))
+          : galleryPlaceholders.map((label, i) => (
+              <a
+                href={i > 5 ? '/services' : '/catalog'}
+                data-reveal
+                style={`--reveal-delay: ${(i % 4) * 60}ms`}
+                class="frame group block"
+              >
+                <div class="flex aspect-[4/3] flex-col items-center justify-center gap-3 bg-cream px-3">
+                  <span class="h-1.5 w-1.5 rotate-45 bg-burgundy/50 transition-colors duration-200 group-hover:bg-burgundy"></span>
+                  <span class="display text-center text-2xl leading-none text-muted md:text-3xl">
+                    {label}
+                  </span>
+                  <span class="h-px w-12 bg-ink/25"></span>
+                </div>
+              </a>
+            ))
+      }
+    </div>
+  </section>
+
+  <!-- ================= CREDENTIALS ================= -->
+  <section class="container-x py-20 md:py-28">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Why {site.brandShort}</span>
+    </div>
+    <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        credentials.map((item, i) => (
+          <div data-reveal style={`--reveal-delay: ${i * 60}ms`} class="border-t-2 border-burgundy pt-4">
+            <h2 class="display text-xl text-ink">{item.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ================= MARQUES ================= -->
+  <section class="border-y border-chrome bg-cream py-14">
+    <div class="container-x">
+      <p data-reveal class="label text-center text-muted">Marques we know by heart</p>
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        {
+          marques.map((marque, i) => (
+            <span data-reveal style={`--reveal-delay: ${i * 30}ms`} class="display text-xl text-muted md:text-2xl">
+              {marque}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="container-x py-20 md:py-28">
+    <div class="section-label">
+      <span class="label shrink-0 text-muted">Owners</span>
+    </div>
+    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        testimonials.map((t, i) => (
+          <figure data-reveal style={`--reveal-delay: ${i * 70}ms`} class="tag flex flex-col justify-between p-6">
+            <blockquote class="text-base leading-relaxed text-ink/85">“{t.quote}”</blockquote>
+            <figcaption class="mt-6 border-t border-chrome pt-4">
+              <p class="label text-burgundy">{t.name}</p>
+              <p class="mt-1 text-xs text-muted">{t.role}</p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaSection />
+</BaseLayout>

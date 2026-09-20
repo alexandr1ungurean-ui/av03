@@ -1,0 +1,72 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../data/site';
+---
+
+<LegalLayout
+  title="Cookie Policy"
+  description={`How ${site.name} uses cookies and similar technologies, and how you can control them.`}
+>
+  <p>
+    This Cookie Policy explains how {site.name} uses cookies and similar technologies on this
+    website (the "Site"), and how you can control them.
+  </p>
+
+  <h2>1. What Cookies Are</h2>
+  <p>
+    Cookies are small text files placed on your device by a website. They are widely used to make
+    websites work, to remember preferences, and to provide information to site operators. Similar
+    technologies include local storage, pixels, and tags.
+  </p>
+
+  <h2>2. Cookies We Use</h2>
+  <div class="note">
+    <p>
+      <strong>This Site does not set advertising cookies, tracking pixels, or third-party analytics
+      cookies.</strong> We do not build advertising profiles and we do not sell or share personal
+      information through cookies.
+    </p>
+  </div>
+  <p>
+    Our hosting provider may process standard technical request data (such as IP address, user agent,
+    and requested URL) in server logs for security and reliability purposes. This is necessary for
+    the Site to function and is not used to identify or profile individual visitors.
+  </p>
+
+  <h2>3. Third-Party Cookies</h2>
+  <p>
+    We do not intentionally embed third-party services that set cookies on this Site. If we add such
+    a service in the future, we will update this policy and, where required by law, request your
+    consent before any non-essential cookie is set.
+  </p>
+
+  <h2>4. How to Control Cookies</h2>
+  <p>
+    You can control or delete cookies through your browser settings. Most browsers let you block
+    cookies, delete existing ones, or alert you when a cookie is set. Because this Site does not rely
+    on cookies for core functionality, blocking them will not prevent you from browsing our
+    inventory or contacting us.
+  </p>
+  <ul>
+    <li>Chrome: Settings → Privacy and security → Third-party cookies</li>
+    <li>Safari: Settings → Privacy → Manage Website Data</li>
+    <li>Firefox: Settings → Privacy &amp; Security → Cookies and Site Data</li>
+    <li>Edge: Settings → Cookies and site permissions</li>
+  </ul>
+  <p>
+    You can also enable "Do Not Track" or Global Privacy Control (GPC) signals in your browser. We
+    honour opt-out preference signals to the extent required by applicable law.
+  </p>
+
+  <h2>5. Changes to This Policy</h2>
+  <p>
+    We may update this Cookie Policy from time to time. The "Last updated" date above will reflect
+    the most recent revision.
+  </p>
+
+  <h2>6. Contact</h2>
+  <p>
+    Questions about cookies or privacy? Contact {site.name} at
+    <a href={`mailto:${site.email}`}>{site.email}</a> or <a href={site.phoneHref}>{site.phone}</a>.
+  </p>
+</LegalLayout>
