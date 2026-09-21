@@ -51,7 +51,7 @@ const posterSvg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000
   <rect x="92" y="362" width="104" height="4" fill="#7a2b2b"/>
   <text x="92" y="420" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#6b5b4b">American classics — sales, restoration</text>
   <text x="92" y="454" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#6b5b4b">&amp; service</text>
-  <text x="92" y="${H - 78}" font-family="Georgia, 'Times New Roman', serif" font-size="19" letter-spacing="3" fill="#6b5b4b">av03.pages.dev</text>
+  <text x="92" y="${H - 78}" font-family="Georgia, 'Times New Roman', serif" font-size="19" letter-spacing="3" fill="#6b5b4b">goldeneramotors.site</text>
   <g transform="translate(830 200)">
     <rect x="-40" y="-6" width="290" height="1.5" fill="#231a14" fill-opacity="0.35"/>
     <text x="96" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="86" letter-spacing="6" fill="#231a14" fill-opacity="0.55" text-anchor="middle">1978</text>
@@ -79,7 +79,7 @@ const photoSvg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/
   <rect x="0" y="${H - BAND}" width="${W}" height="3" fill="#faf5ec" fill-opacity="0.5"/>
   <text x="72" y="${H - BAND + 54}" font-family="Georgia, 'Times New Roman', serif" font-size="38" letter-spacing="5" fill="#faf5ec">GOLDEN ERA MOTORS</text>
   <text x="72" y="${H - BAND + 92}" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#faf5ec" fill-opacity="0.85">American classics — sales, restoration &amp; service</text>
-  <text x="${W - 72}" y="${H - BAND + 54}" font-family="Georgia, 'Times New Roman', serif" font-size="19" letter-spacing="3" fill="#faf5ec" fill-opacity="0.92" text-anchor="end">av03.pages.dev</text>
+  <text x="${W - 72}" y="${H - BAND + 54}" font-family="Georgia, 'Times New Roman', serif" font-size="19" letter-spacing="3" fill="#faf5ec" fill-opacity="0.92" text-anchor="end">goldeneramotors.site</text>
   ${stock ? `<text x="${W - 72}" y="${H - BAND + 88}" font-family="Georgia, 'Times New Roman', serif" font-size="19" letter-spacing="3" fill="#faf5ec" fill-opacity="0.7" text-anchor="end">${stock}</text>` : ''}
 </svg>`;
 

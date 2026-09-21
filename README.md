@@ -88,7 +88,7 @@ pnpm og         # превью для соцсетей
 
 ## Деплой (Cloudflare Pages)
 
-Проект **av03** → https://av03.pages.dev. Репозиторий: `alexandr1ungurean-ui/av03`.
+Проект **av03** → https://goldeneramotors.site. Репозиторий: `alexandr1ungurean-ui/av03`.
 
 | Поле | Значение |
 |---|---|

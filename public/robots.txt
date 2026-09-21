@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://av03.pages.dev/sitemap-index.xml
+Sitemap: https://goldeneramotors.site/sitemap-index.xml

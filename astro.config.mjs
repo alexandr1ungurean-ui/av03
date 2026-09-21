@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://av03.pages.dev',
+  site: 'https://goldeneramotors.site',
   output: 'static',
   // Cloudflare Pages serves directory routes at /x/ and 308-redirects /x
   trailingSlash: 'always',

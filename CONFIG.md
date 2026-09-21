@@ -23,10 +23,10 @@
 | `description` | Дефолтное meta description | `'Classic American car sales, restoration and service…'` |
 | `phone` | Отображаемый номер | `'+1 (313) 555-0197'` |
 | `phoneHref` | Ссылка `tel:` (только цифры) | `'tel:+13135550197'` |
-| `email` | Email | `'hello@goldeneramotors.com'` |
+| `email` | Email | `'info@goldeneramotors.site'` |
 | `address` | Адрес | `'3400 Michigan Avenue, Detroit, MI'` |
 | `hours` | Часы работы | `'Mon–Sat · 9:00–18:00'` |
-| `url` | Домен (должен совпадать с `astro.config.mjs`) | `'https://av03.pages.dev'` |
+| `url` | Домен (должен совпадать с `astro.config.mjs`) | `'https://goldeneramotors.site'` |
 | `established` | Год основания (в hero, CTA, About, OG) | `'1978'` |
 
 Ниже в этом же файле: `nav`, `services` (6 позиций с ценами), `testimonials`, `stats`.
@@ -96,7 +96,7 @@
 ## 4. Домен → `astro.config.mjs`
 
 ```js
-site: 'https://av03.pages.dev',
+site: 'https://goldeneramotors.site',
 ```
 Должно совпадать с `site.url` в `site.ts` и с `Sitemap:` в `public/robots.txt`.
 
@@ -143,7 +143,7 @@ pnpm scenes          # перерисовать все плашки
 | Файл | Что менять |
 |---|---|
 | `public/favicon.svg` | рамка + монограмма «G» |
-| `scripts/make-og.mjs` | текст «GOLDEN ERA MOTORS», «EST. 1978 · DETROIT, MICHIGAN», `av03.pages.dev` |
+| `scripts/make-og.mjs` | текст «GOLDEN ERA MOTORS», «EST. 1978 · DETROIT, MICHIGAN», `goldeneramotors.site` |
 | `scripts/make-hero.mjs` | фон-заглушка героя: «1978», город, слоган |
 | `scripts/make-scenes.mjs` | подписи и «GOLDEN ERA MOTORS» на плашках |
 | `public/hero.jpg` | заглушка героя и фон галереи на главной |
