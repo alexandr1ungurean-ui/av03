@@ -146,7 +146,7 @@ const specs: Spec[] = (
 
   <section class="container-x pb-16">
     <div class="section-label">
-      <span class="label shrink-0 text-muted">The Story</span>
+      <h2 class="label shrink-0 text-muted">The Story</h2>
     </div>
     <p data-reveal class="mx-auto mt-10 max-w-3xl text-lg leading-relaxed text-ink/80">
       {car.description}
@@ -155,7 +155,7 @@ const specs: Spec[] = (
 
   <section class="container-x pb-16">
     <div class="section-label">
-      <span class="label shrink-0 text-muted">Specifications</span>
+      <h2 class="label shrink-0 text-muted">Specifications</h2>
     </div>
     <dl data-reveal class="mt-10 grid grid-cols-1 gap-x-12 border-t border-chrome sm:grid-cols-2">
       {
@@ -174,7 +174,7 @@ const specs: Spec[] = (
     car.features && car.features.length > 0 && (
       <section class="container-x pb-16">
         <div class="section-label">
-          <span class="label shrink-0 text-muted">Equipment</span>
+          <h2 class="label shrink-0 text-muted">Equipment</h2>
         </div>
         <ul class="mt-10 grid grid-cols-1 gap-x-10 border-t border-chrome sm:grid-cols-2 lg:grid-cols-3">
           {car.features.map((feature, i) => (
@@ -196,7 +196,7 @@ const specs: Spec[] = (
     related.length > 0 && (
       <section class="container-x pb-20 md:pb-24">
         <div class="section-label">
-          <span class="label shrink-0 text-muted">More from the floor</span>
+          <h2 class="label shrink-0 text-muted">More from the floor</h2>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((c, i) => (

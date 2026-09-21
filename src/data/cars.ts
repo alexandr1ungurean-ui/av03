@@ -71,6 +71,41 @@ export const cars: Car[] = [
     description:
       'The 1965 Pontiac GTO Convertible, an enduring icon among muscle cars, combines potent performance with classic styling. Under the hood, a robust 389ci V8 engine delivers impressive power, channeled through a responsive 4-speed manual transmission. Performance has been enhanced with an Edelbrock intake manifold, further adorned with polished valve covers and an air cleaner. Finished in a lustrous Starlight Black, the bodywork is straight and reflective, complemented by gleaming exterior chrome. The car maintains its authentic stance on 14-inch factory steel wheels, featuring correct beauty rings and hubcaps, fitted with BFGoodrich Radial T/A tires for excellent handling. The black interior, noted to have been refinished in 2017, remains in very good condition, presenting bucket seats with a center console, a Hurst T-handle shifter, and a wood-grain steering wheel. The white convertible top is in excellent condition, offering a sophisticated contrast. Additional features include power steering, power brakes, and a power top, enhancing the driving experience of this legendary muscle car. This GTO is a fantastic example, ready to impress with its blend of power and classic appeal.',
   },
+  {
+    slug: 'ford-bronco-1977',
+    brand: 'Ford',
+    model: 'Bronco',
+    year: 1977,
+    price: 62900,
+    body: 'SUV',
+    engine: '347 cu in stroker V8 (5.7L)',
+    mileage: 2592,
+    transmission: 'Automatic',
+    drive: 'Four-Wheel Drive (4WD)',
+    fuel: 'Gasoline',
+    color: 'Charcoal Metallic',
+    silhouette: 'suv',
+    images: ['/cars/ford-bronco-1977.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: true,
+    features: [
+      '347 cu in stroker V8 with Holley Viper EFI',
+      'Stroker V8 reported at 410 horsepower',
+      'Automatic transmission',
+      'TBP twin-stick 4x4 shifter',
+      'Fully functional four-wheel drive system',
+      'New black interior, neat and tidy',
+      'Full roll cage with rear seatbelts',
+      'Detailed, like-new engine compartment',
+      'Meticulous restoration in the final year of the classic body style',
+      'Straight bodywork in Charcoal Metallic',
+      'Chrome and brightwork in exceptional condition',
+    ],
+    description:
+      'The Ford Bronco holds a legendary status in automotive history, celebrated for its iconic SUV lineage and enduring appeal across generations. Renowned for its distinctive styling, robust drivability, and reliability, a Bronco is a highly sought-after classic that continues to appreciate in value. This impressive 1977 Ford Bronco, representing the final year of its coveted body style, has undergone a meticulous restoration. It is powered by a potent 347 stroker V8 engine featuring Holley Viper EFI, paired with a smooth automatic transmission, reportedly capable of 410 horsepower. The fully functional 4x4 system includes a TBP twin-stick shifter, affirming its rugged capability. The exterior is presented in a stunning Charcoal Metallic finish, beautifully complemented by new black interior. The trim and chrome brightwork are in astonishing condition, enhancing its overall allure. The interior is neat and tidy, complete with rear seatbelts and a full cage. The engine compartment is highly detailed, appearing in like-new condition, a testament to the quality of its restoration. This classic Bronco stands as a premier choice for enthusiasts seeking a proven and vintage SUV.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);
