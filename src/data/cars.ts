@@ -178,6 +178,43 @@ export const cars: Car[] = [
     description:
       'This 1971 C-1500 Longbed pickup stands in immaculate condition, presenting extremely well after an intense, total restoration where virtually every component was meticulously addressed, cleaned, painted, or replaced. Both the engine and transmission have been rebuilt, ensuring robust performance. Under the hood, the 396ci V8 engine features performance upgrades including headers, an Edelbrock intake, carburetor, and air cleaner, complemented by power steering and power brakes for a refined driving experience. Further enhancements include new shocks, air conditioning, Flowmaster mufflers, and a practical tonneau cover. The interior maintains its immaculate state, perfectly complementing the exterior\u2019s striking two-tone paint and excellent trim.',
   },
+  {
+    slug: 'dodge-charger-1968',
+    brand: 'Dodge',
+    model: 'Charger',
+    year: 1968,
+    price: 31000,
+    body: 'Muscle Car',
+    engine: '383 cu in V8 (6.3L)',
+    mileage: 4794,
+    transmission: 'Automatic',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'QQ1 Blue Metallic',
+    silhouette: 'coupe',
+    images: ['/cars/dodge-charger-1968.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: true,
+    features: [
+      'Healthy 383 cu in V8',
+      '400 hp Edelbrock Performer kit',
+      'Hooker headers with Edelbrock heads, carburetor and intake',
+      'Chrome air cleaner',
+      'Rebuilt automatic transmission',
+      '3.55:1 rear end',
+      'Rebuilt front suspension',
+      'Front disc brakes',
+      '16-inch wheels with BF Goodrich white letter radials',
+      'Aggressive dual exhaust',
+      'Bucket seats in a neat, well-kept interior',
+      'Black vinyl roof',
+      'Dry, solid trunk and floor pans',
+    ],
+    description:
+      'This second-generation 1968 Dodge Charger is a striking example, finished in a beautiful blue metallic that showcases well, complemented by chrome and brightwork in good condition. The interior is neat, tidy, and well-kept, featuring bucket seats. Under the hood, a healthy 383ci V8, paired with a rebuilt automatic transmission and a 3.55:1 rear end, has been significantly enhanced. Performance upgrades include a 400HP Edelbrock Performer kit, Hooker headers, Edelbrock heads, carburetor, and intake, all capped with a chrome air cleaner. The car benefits from a rebuilt front suspension and the addition of front disc brakes, ensuring improved handling. It rides on 16-inch wheels with BF Goodrich white letter radial tires, and an aggressive dual exhaust system delivers an awesome sound. This is a very solid vehicle, with dry and solid trunk and floor pans, offering a blast to drive for any enthusiast.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);
