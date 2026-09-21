@@ -31,7 +31,10 @@ export type FeatureIconName =
  * "twin-stick 4x4 shifter" must stay a shifter.
  */
 const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
-  [/v-?8|engine|manifold|carburett?or|valve cover|air cleaner|exhaust|header|cu in|cubic|cylinder|efi|horsepower/i, 'engine'],
+  [
+    /v-?8|engine|manifold|carburett?or|valve cover|air cleaner|exhaust|header|cu in|cubic|cylinder|efi|horsepower|procharg|supercharg|turbo|blower|intercooler|inject|dyno|whp|torque|piston/i,
+    'engine',
+  ],
   [/transmission|speed manual|automatic|shifter|gearbox|clutch|console/i, 'shifter'],
   [/seat|upholster|interior|hide|door card|headliner/i, 'seat'],
   [/steering/i, 'steering'],
@@ -39,9 +42,9 @@ const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
   [/convertible top|soft top|hardt?op|vinyl roof|roof|sunroof/i, 'top'],
   [/4x4|4wd|awd|four-wheel drive|all-wheel|transfer case|drivetrain/i, 'drive'],
   [/wheels?|tyres?|tires?|rims?|hubcap|beauty ring/i, 'wheel'],
-  [/\ba\/c\b|air conditioning|gauge|instrument|radio|clock|tachometer/i, 'gauge'],
+  [/\ba\/c\b|air conditioning|heat|gauge|instrument|radio|stereo|audio|speaker|clock|tachometer/i, 'gauge'],
   [/restor|frame-off|refinish|rebuild|survivor|documented|like-new/i, 'condition'],
-  [/chrome|stainless|trim|bumper|grille|paint|bodywork|brightwork/i, 'trim'],
+  [/chrome|stainless|trim|bumper|grille|paint|bodywork|brightwork|carbon/i, 'trim'],
 ];
 
 export function featureIcon(feature: string): FeatureIconName {

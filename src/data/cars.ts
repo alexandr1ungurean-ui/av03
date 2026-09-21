@@ -106,6 +106,42 @@ export const cars: Car[] = [
     description:
       'The Ford Bronco holds a legendary status in automotive history, celebrated for its iconic SUV lineage and enduring appeal across generations. Renowned for its distinctive styling, robust drivability, and reliability, a Bronco is a highly sought-after classic that continues to appreciate in value. This impressive 1977 Ford Bronco, representing the final year of its coveted body style, has undergone a meticulous restoration. It is powered by a potent 347 stroker V8 engine featuring Holley Viper EFI, paired with a smooth automatic transmission, reportedly capable of 410 horsepower. The fully functional 4x4 system includes a TBP twin-stick shifter, affirming its rugged capability. The exterior is presented in a stunning Charcoal Metallic finish, beautifully complemented by new black interior. The trim and chrome brightwork are in astonishing condition, enhancing its overall allure. The interior is neat and tidy, complete with rear seatbelts and a full cage. The engine compartment is highly detailed, appearing in like-new condition, a testament to the quality of its restoration. This classic Bronco stands as a premier choice for enthusiasts seeking a proven and vintage SUV.',
   },
+  {
+    slug: 'chevrolet-camaro-1968',
+    brand: 'Chevrolet',
+    model: 'Camaro SS',
+    year: 1968,
+    price: 59900,
+    body: 'Coupe',
+    engine: '400 cu in V8, ProCharged (6.6L)',
+    mileage: 8127,
+    transmission: '6-Speed Manual (T56)',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'Black',
+    silhouette: 'coupe',
+    images: ['/cars/chevrolet-camaro-1968.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: true,
+    features: [
+      'Professionally built 400 cu in V8 with Dart iron block',
+      'Diamond pistons and aluminum cylinder heads',
+      'D-1SC ProCharger with intercooler',
+      'Holley EFI and a full custom exhaust',
+      'Dyno-tested at 539 whp and 504 ft-lb',
+      'T56 6-speed manual transmission',
+      'Power steering',
+      '4-wheel disc brakes',
+      'Functional heat and air conditioning',
+      'Stereo system',
+      'Houndstooth interior',
+      'Brilliant black paint with carbon fiber accents',
+    ],
+    description:
+      'This stunning 1968 Chevrolet Camaro SS showcases a brilliant black paint job complemented by a sophisticated houndstooth interior and subtle carbon fiber accents, achieving a show-stopping appearance. Under the hood lies a monstrous, professionally built 400 cubic inch V8 engine, expertly mated to a T56 manual transmission. This powerhouse features a Dart iron block, Diamond pistons, aluminum heads, a D-1SC ProCharger, intercooler, Holley EFI, and a full custom exhaust. The impressive performance package has been dyno-tested, delivering a remarkable 539 whp and 504 ft-lb. Enhancing modern drivability and comfort, standard features include power steering, 4-wheel disc brakes, functional heat, air conditioning, and a stereo system. This first-generation Camaro merges iconic American muscle car styling with significant performance upgrades, creating an amazing vehicle.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);
