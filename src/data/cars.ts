@@ -30,6 +30,8 @@ export interface Car {
   condition?: string;
   features?: string[];
   featured?: boolean;
+  /** pin this car as the homepage hero (otherwise the dearest featured car is used) */
+  hero?: boolean;
   description: string;
 }
 
@@ -234,6 +236,7 @@ export const cars: Car[] = [
     cylinders: 8,
     condition: 'Used',
     featured: true,
+    hero: true,
     features: [
       'Rebuilt and bored 530 cu in V8, originally a 454',
       'Mahle pistons and Dart cylinder heads',

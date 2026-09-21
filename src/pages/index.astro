@@ -18,8 +18,10 @@ const credentials = [
 
 const marques = ['Ford', 'Chevrolet', 'Pontiac', 'Dodge', 'Plymouth', 'Buick', 'Cadillac', 'Oldsmobile', 'Studebaker', 'Packard'];
 
+const pinnedHero = featuredCars.find((car) => car.hero);
 const heroCar =
-  featuredCars.length > 0 ? [...featuredCars].sort((a, b) => b.price - a.price)[0] : undefined;
+  pinnedHero ??
+  (featuredCars.length > 0 ? [...featuredCars].sort((a, b) => b.price - a.price)[0] : undefined);
 const heroPhoto = heroCar?.images?.[0];
 const heroAvif = heroPhoto ? avifVariant(heroPhoto) : undefined;
 const heroPreload = heroPhoto ? heroAvif : '/hero.jpg';
@@ -42,8 +44,8 @@ const galleryPlaceholders = [
 ---
 
 <BaseLayout
-  title="Home"
-  description="Classic American car sales, restoration and service. Hand-picked vintage vehicles with documented history and concours-level workmanship."
+  title="GOLDEN ERA MOTORS — Classic American Cars for Sale in Detroit"
+  description="Ten hand-picked American classics for sale in Detroit — GTO, Bel Air, Chevelle SS, Camaro SS, Charger, Corvette, Nova and more. Inspected, documented and shipped nationwide."
 >
   <link slot="head" rel="preload" as="image" type={heroPreloadType} href={heroPreload} fetchpriority="high" />
 
@@ -71,8 +73,8 @@ const galleryPlaceholders = [
       </p>
 
       <div data-reveal style="--reveal-delay: 180ms" class="mt-10 flex flex-wrap justify-center gap-4">
-        <Button href="/catalog">Browse the collection</Button>
-        <Button href="/services" variant="ghost">Restoration services</Button>
+        <Button href="/catalog/">Browse the collection</Button>
+        <Button href="/services/" variant="ghost">Restoration services</Button>
       </div>
     </div>
 
@@ -80,7 +82,7 @@ const galleryPlaceholders = [
     <div data-reveal style="--reveal-delay: 220ms" class="container-x mt-14">
       <figure>
         <a
-          href={heroCar ? `/cars/${heroCar.slug}` : '/catalog'}
+          href={heroCar ? `/cars/${heroCar.slug}/` : '/catalog/'}
           aria-label={heroCar
             ? `${heroCar.year} ${heroCar.brand} ${heroCar.model} — view details`
             : 'Browse the collection'}
@@ -156,7 +158,7 @@ const galleryPlaceholders = [
         </div>
 
         <div class="mt-12 text-center">
-          <Button href="/catalog" variant="ghost">See every car</Button>
+          <Button href="/catalog/" variant="ghost">See every car</Button>
         </div>
       </section>
     ) : (
@@ -171,7 +173,7 @@ const galleryPlaceholders = [
             floor this week.
           </p>
           <div class="mt-8 flex justify-center">
-            <Button href="/contacts">Get in touch</Button>
+            <Button href="/contacts/">Get in touch</Button>
           </div>
         </div>
       </section>
@@ -188,7 +190,7 @@ const galleryPlaceholders = [
       {
         services.map((service, i) => (
           <a
-            href={`/services#${service.slug}`}
+            href={`/services/#${service.slug}`}
             data-reveal
             style={`--reveal-delay: ${(i % 3) * 60}ms`}
             class="group flex flex-col gap-4 py-6 transition-colors duration-200 hover:bg-cream sm:flex-row sm:items-center sm:gap-6"
@@ -220,7 +222,7 @@ const galleryPlaceholders = [
       {
         gallery.map((item, i) => (
           <a
-            href={`/cars/${item.car.slug}`}
+            href={`/cars/${item.car.slug}/`}
             data-reveal
             style={`--reveal-delay: ${(i % 4) * 60}ms`}
             class="frame group block"
@@ -243,7 +245,7 @@ const galleryPlaceholders = [
       {
         galleryPlaceholders.slice(0, Math.max(0, 8 - gallery.length)).map((label, i) => (
           <a
-            href={i > 5 - gallery.length ? '/services' : '/catalog'}
+            href={i > 5 - gallery.length ? '/services/' : '/catalog/'}
             data-reveal
             style={`--reveal-delay: ${((gallery.length + i) % 4) * 60}ms`}
             class="frame group block"

@@ -21,7 +21,7 @@ const cardPhoto = photo ? cardVariant(photo) : undefined;
 const cardAvif = photo ? cardAvifVariant(photo) : undefined;
 ---
 
-<a href={`/cars/${car.slug}`} class="group block">
+<a href={`/cars/${car.slug}/`} class="group block">
   <article class="tag p-3 transition-transform duration-200 group-hover:-translate-y-0.5">
     <div class="flex items-center justify-between gap-3 border-b border-chrome pb-2">
       <span class="label text-muted">{car.body}</span>

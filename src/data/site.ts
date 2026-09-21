@@ -23,11 +23,11 @@ export interface NavItem {
 
 export const nav: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Inventory', href: '/catalog' },
-  { label: 'Restoration', href: '/services' },
-  { label: 'Shipping', href: '/shipping' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contacts' },
+  { label: 'Inventory', href: '/catalog/' },
+  { label: 'Restoration', href: '/services/' },
+  { label: 'Shipping', href: '/shipping/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contacts/' },
 ];
 
 export interface Service {

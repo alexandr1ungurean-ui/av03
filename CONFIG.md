@@ -51,6 +51,7 @@
 | `vin` / `doors` / `cylinders` / `condition` | опционально; `condition` показывается в спеках |
 | `features` | список опций (секция «Equipment» на странице авто) |
 | `featured` | `true` — показывать на главной + делать героем |
+| `hero` | `true` — закрепить машину героем главной (иначе берётся самая дорогая из featured) |
 | `description` | текст на странице авто |
 
 Фильтр в каталоге строится автоматически из списка `body` — если добавишь новый тип,
@@ -150,10 +151,30 @@ pnpm scenes          # перерисовать все плашки
 
 Перегенерация:
 ```bash
-pnpm hero                            # public/hero.jpg
-pnpm scenes                          # public/scenes/*.webp (13 плашек)
-pnpm og                              # public/og.jpg — плакат без фото
-node scripts/make-og.mjs img/shop.jpg   # public/og.jpg — с фото справа
+pnpm hero                                # public/hero.jpg (заглушка героя)
+pnpm scenes                              # public/scenes/*.webp (13 плашек)
+pnpm og                                  # public/og.jpg — плакат без фото
+node scripts/make-og.mjs img/<фото>.jpg   # public/og.jpg — фото машины + бордовая полоса
+```
+
+> Сейчас OG-картинка собрана из фото Chevelle SS (`node scripts/make-og.mjs img/chevrolet-chevelle-1972.jpg`)
+> и содержит строку «10 cars in stock», которая считается из `src/data/cars.ts` автоматически.
+> Если меняешь героя или добавляешь машины — перегенерируй OG той же командой с фото новой машины.
+
+---
+
+## 8. Ссылки и редиректы
+
+Cloudflare Pages отдаёт страницы по адресу со слэшем (`/catalog/`) и **308-редиректит**
+`/catalog` → `/catalog/`, теряя ~0.7 с на мобильном. Поэтому:
+
+- в `astro.config.mjs` стоит `trailingSlash: 'always'`;
+- все внутренние ссылки в разметке — со слэшем (`/catalog/`, `/cars/<slug>/`, `/services/#restoration`);
+- активный пункт меню считается с нормализацией слэша и помечается `aria-current="page"`.
+
+Если добавляешь новую ссылку — пиши её сразу со слэшем. Быстрая проверка:
+```bash
+grep -rn 'href="/[a-z-]*[a-z]"' src/    # не должно ничего находить
 ```
 
 ---
