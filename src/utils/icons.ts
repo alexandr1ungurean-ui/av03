@@ -32,7 +32,7 @@ export type FeatureIconName =
  */
 const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
   [
-    /v-?8|engine|manifold|carburett?or|valve cover|air cleaner|exhaust|header|cu in|cubic|cylinder|efi|horsepower|procharg|supercharg|turbo|blower|intercooler|inject|dyno|whp|torque|piston/i,
+    /v-?8|engine|manifold|intake|carburett?or|valve cover|air cleaner|exhaust|header|muffler|flowmaster|cu in|cubic|cylinder|efi|horsepower|procharg|supercharg|turbo|blower|intercooler|inject|dyno|whp|torque|piston/i,
     'engine',
   ],
   [/transmission|speed manual|automatic|shifter|gearbox|clutch|console/i, 'shifter'],
@@ -40,7 +40,7 @@ const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
   [/steering/i, 'steering'],
   [/brake|disc|drum/i, 'brake'],
   [/convertible top|soft top|hardt?op|vinyl roof|roof|sunroof/i, 'top'],
-  [/4x4|4wd|awd|four-wheel drive|all-wheel|transfer case|drivetrain/i, 'drive'],
+  [/4x4|4wd|awd|four-wheel drive|all-wheel|transfer case|drivetrain|shock|suspension|spring|axle/i, 'drive'],
   [/wheels?|tyres?|tires?|rims?|hubcap|beauty ring/i, 'wheel'],
   [/\ba\/c\b|air conditioning|heat|gauge|instrument|radio|stereo|audio|speaker|clock|tachometer/i, 'gauge'],
   [/restor|frame-off|refinish|rebuild|survivor|documented|like-new/i, 'condition'],

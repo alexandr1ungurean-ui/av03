@@ -142,6 +142,42 @@ export const cars: Car[] = [
     description:
       'This stunning 1968 Chevrolet Camaro SS showcases a brilliant black paint job complemented by a sophisticated houndstooth interior and subtle carbon fiber accents, achieving a show-stopping appearance. Under the hood lies a monstrous, professionally built 400 cubic inch V8 engine, expertly mated to a T56 manual transmission. This powerhouse features a Dart iron block, Diamond pistons, aluminum heads, a D-1SC ProCharger, intercooler, Holley EFI, and a full custom exhaust. The impressive performance package has been dyno-tested, delivering a remarkable 539 whp and 504 ft-lb. Enhancing modern drivability and comfort, standard features include power steering, 4-wheel disc brakes, functional heat, air conditioning, and a stereo system. This first-generation Camaro merges iconic American muscle car styling with significant performance upgrades, creating an amazing vehicle.',
   },
+  {
+    slug: 'gmc-c-1500-1971',
+    brand: 'GMC',
+    model: 'C-1500',
+    year: 1971,
+    price: 22900,
+    body: 'Pickup',
+    engine: '396 cu in V8 (6.5L)',
+    mileage: 43682,
+    transmission: 'Automatic',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'Blue & White two-tone',
+    silhouette: 'suv',
+    images: ['/cars/gmc-c-1500-1971.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: true,
+    features: [
+      'Total restoration — every component cleaned, painted or replaced',
+      'Rebuilt 396 cu in V8',
+      'Headers and Edelbrock intake',
+      'Carburetor and air cleaner',
+      'Flowmaster mufflers',
+      'Rebuilt automatic transmission',
+      'Power steering',
+      'Power brakes',
+      'New shocks',
+      'Air conditioning',
+      'Tonneau cover for the long bed',
+      'Immaculate two-tone paint and exterior trim',
+    ],
+    description:
+      'This 1971 C-1500 Longbed pickup stands in immaculate condition, presenting extremely well after an intense, total restoration where virtually every component was meticulously addressed, cleaned, painted, or replaced. Both the engine and transmission have been rebuilt, ensuring robust performance. Under the hood, the 396ci V8 engine features performance upgrades including headers, an Edelbrock intake, carburetor, and air cleaner, complemented by power steering and power brakes for a refined driving experience. Further enhancements include new shocks, air conditioning, Flowmaster mufflers, and a practical tonneau cover. The interior maintains its immaculate state, perfectly complementing the exterior\u2019s striking two-tone paint and excellent trim.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);
