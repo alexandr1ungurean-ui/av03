@@ -343,7 +343,7 @@ export const cars: Car[] = [
     doors: 2,
     cylinders: 8,
     condition: 'Used',
-    featured: false,
+    featured: true,
     features: [
       '327 cu in V8 now producing 350 hp — up from the stock 275',
       'Engine and transmission in strong working condition',
@@ -357,6 +357,39 @@ export const cars: Car[] = [
     ],
     description:
       'This 1967 Chevrolet Nova SS perfectly embodies the classic American muscle car era. Originally equipped with Chevrolet\u2019s potent 327ci V8 engine and a 4-speed manual transmission, this Nova SS delivers ample power, with its engine now producing an impressive 350 horsepower, a significant upgrade from the stock 275 hp. The engine and transmission are both in strong working condition, propelling the car down the road with enthusiasm. The vehicle presents beautifully in a deep Madeira Maroon exterior, complemented by striking SS badging and thin whitewall tires. Its black interior, featuring factory-optional bucket seats, remains in exceptional condition. Mechanically sound, this Nova SS fires up readily, drives true, and maintains a straight body with fully functional lighting. This Nova SS represents a desirable and recognizable piece of classic American automotive heritage.',
+  },
+  {
+    slug: 'chevrolet-nova-1966',
+    brand: 'Chevrolet',
+    model: 'Nova',
+    year: 1966,
+    price: 38900,
+    body: 'Coupe',
+    engine: '350 cu in V8 (5.7L)',
+    mileage: 97927,
+    transmission: '4-Speed Automatic (700R4)',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'Black',
+    silhouette: 'coupe',
+    images: ['/cars/chevrolet-nova-1966.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Restored',
+    featured: true,
+    features: [
+      'Full nut and bolt restoration completed in 2016',
+      'Fresh 350 cu in V8',
+      'Mild cam and dual exhaust system',
+      '700R4 automatic transmission',
+      'Power steering',
+      'Power front disc brakes',
+      'Aftermarket gauges',
+      'Black exterior with a black vinyl top',
+      'Black interior',
+    ],
+    description:
+      'This meticulously restored 1966 Chevrolet Nova is a standout example of automotive craftsmanship and timeless design. A full nut and bolt restoration was completed in 2016, maintaining its classic look while enhancing its performance capabilities. Finished in a striking black exterior paired with a black interior and vinyl top, this Nova is both bold and elegant. Under the hood, it boasts a fresh 350 cubic inch V8 engine perfectly paired with a smooth 700R4 automatic transmission. Performance upgrades such as a dual exhaust system and mild cam ensure this Nova not only turns heads with its style but also offers a powerful and exhilarating driving experience. With features like power steering, power front disc brakes, and aftermarket gauges, this car merges classic style with modern driving comforts and conveniences.',
   },
 ];
 
