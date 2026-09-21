@@ -43,7 +43,7 @@
 | `slug` | уникальный id, совпадает с именем фото (напр. `'mustang-1965-fastback'`) |
 | `brand` / `model` | марка / модель |
 | `year` / `price` | год / цена в USD |
-| `body` | `'Coupe' \| 'Sedan' \| 'Convertible' \| 'Hardtop' \| 'Wagon' \| 'Pickup' \| 'Muscle Car'` |
+| `body` | `'Coupe' \| 'Sedan' \| 'Convertible' \| 'Hardtop' \| 'Wagon' \| 'Pickup' \| 'SUV' \| 'Muscle Car'` |
 | `engine` / `mileage` | двигатель / пробег (мили) |
 | `transmission` / `drive` / `fuel` / `color` | КПП / привод / топливо / цвет |
 | `silhouette` | `'classic' \| 'coupe' \| 'sedan' \| 'suv'` — SVG-заглушка, если нет фото |
@@ -55,6 +55,12 @@
 
 Фильтр в каталоге строится автоматически из списка `body` — если добавишь новый тип,
 допиши его в массив `bodies` в начале `src/pages/catalog.astro`.
+
+**Значки у комплектации.** Блок «Equipment» на странице авто сам подбирает иконку под
+текст пункта — правило ищется по ключевым словам в `featureIcon()` из `src/utils/icons.ts`
+(engine / shifter / seat / steering / brake / top / wheel / gauge / trim). Просто пишешь
+пункт обычным текстом, значок подставится сам. Новый значок рисуется в
+`src/components/FeatureIcon.astro` (стиль — линия 1.5px, как у `SpecIcon.astro`).
 
 ### Как добавить машину
 1. Кинь фото в папку `img/` (гитигнорится).

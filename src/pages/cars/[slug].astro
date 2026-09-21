@@ -4,10 +4,12 @@ import Button from '../../components/Button.astro';
 import CarCard from '../../components/CarCard.astro';
 import CarSilhouette from '../../components/CarSilhouette.astro';
 import SpecIcon from '../../components/SpecIcon.astro';
+import FeatureIcon from '../../components/FeatureIcon.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import { cars, formatPrice } from '../../data/cars';
 import type { Car } from '../../data/cars';
 import { avifVariant } from '../../utils/images';
+import { featureIcon } from '../../utils/icons';
 import type { SpecIconName } from '../../utils/icons';
 
 export function getStaticPaths() {
@@ -36,7 +38,7 @@ const specs: Spec[] = (
     { icon: 'mileage', label: 'Mileage', value: `${mileage} mi` },
     { icon: 'fuel', label: 'Fuel', value: car.fuel },
     { icon: 'color', label: 'Color', value: car.color },
-    { icon: 'door', label: 'Doors', value: car.doors ? `${car.doors} Doors` : '' },
+    { icon: 'door', label: 'Doors', value: car.doors ? String(car.doors) : '' },
     { icon: 'cylinder', label: 'Cylinders', value: car.cylinders ? String(car.cylinders) : '' },
     { icon: 'condition', label: 'Condition', value: car.condition ?? '' },
     { icon: 'vin', label: 'VIN', value: car.vin ?? '' },
@@ -63,7 +65,7 @@ const specs: Spec[] = (
       <span class="label shrink-0 text-muted">{car.body} · {car.year}</span>
     </div>
     <h1 data-reveal class="display mt-8 max-w-4xl text-5xl text-ink md:text-7xl">
-      {car.brand} {car.model}
+      {`${car.brand} ${car.model}`}
     </h1>
     <p data-reveal style="--reveal-delay: 60ms" class="display mt-5 text-3xl text-burgundy md:text-4xl">
       {formatPrice(car.price)}
@@ -94,7 +96,7 @@ const specs: Spec[] = (
           </div>
         </div>
         <figcaption class="label mt-3 text-center text-muted">
-          {car.year} {car.brand} {car.model} · {car.color}
+          {`${car.year} ${car.brand} ${car.model} · ${car.color}`}
         </figcaption>
       </figure>
 
@@ -181,7 +183,7 @@ const specs: Spec[] = (
               style={`--reveal-delay: ${(i % 6) * 40}ms`}
               class="flex items-center gap-3 border-b border-chrome py-3.5 text-sm text-ink/80"
             >
-              <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-burgundy"></span>
+              <FeatureIcon name={featureIcon(feature)} class="h-[18px] w-[18px] shrink-0 text-burgundy" />
               {feature}
             </li>
           ))}

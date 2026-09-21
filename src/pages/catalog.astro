@@ -5,7 +5,17 @@ import CarCard from '../components/CarCard.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { cars } from '../data/cars';
 
-const bodies = ['All', 'Coupe', 'Convertible', 'Hardtop', 'Muscle Car', 'Sedan', 'Wagon', 'Pickup'] as const;
+const bodies = [
+  'All',
+  'Coupe',
+  'Convertible',
+  'Hardtop',
+  'Muscle Car',
+  'Sedan',
+  'Wagon',
+  'Pickup',
+  'SUV',
+] as const;
 ---
 
 <BaseLayout

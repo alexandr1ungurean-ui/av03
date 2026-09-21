@@ -1,0 +1,43 @@
+---
+import type { FeatureIconName } from '../utils/icons';
+
+interface Props {
+  name: FeatureIconName;
+  class?: string;
+}
+
+const { name, class: className = 'h-4 w-4' } = Astro.props;
+
+// 24x24 line icons for the equipment list, matching SpecIcon's 1.5px stroke style.
+const icons: Record<FeatureIconName, string> = {
+  engine:
+    '<rect x="3.5" y="9" width="17" height="7.5" rx="1.5"/><path d="M7 9V6.2h3.6V9M13.4 9V6.2H17V9"/><path d="M6 16.5v2.3M18 16.5v2.3"/><path d="M10.6 12.7h2.8"/>',
+  shifter:
+    '<path d="M12 21V9.2"/><circle cx="12" cy="6.4" r="2.6"/><path d="M8.6 21h6.8"/><path d="M8.6 18.4h6.8"/>',
+  seat:
+    '<path d="M9 3.5h4.4a2 2 0 0 1 2 2V12H9z"/><path d="M6.4 12h11.2a1.6 1.6 0 0 1 1.6 1.6v2.2a1.6 1.6 0 0 1-1.6 1.6H6.4A1.6 1.6 0 0 1 4.8 15.8v-2.2A1.6 1.6 0 0 1 6.4 12Z"/><path d="M7 17.4V21M17 17.4V21"/>',
+  steering:
+    '<circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="2.2"/><path d="M12 14.2V20.2M4.6 10.4h14.8"/>',
+  brake:
+    '<circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.1"/><path d="M12 3.8v2.4M12 17.8v2.4M3.8 12h2.4M17.8 12h2.4"/>',
+  top: '<path d="M3 17.5h18"/><path d="M5.2 17.5c0-5.4 3-8.8 6.8-8.8s6.8 3.4 6.8 8.8"/><path d="M12 8.7v8.8"/>',
+  wheel:
+    '<circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3.8v4.8M12 15.4v4.8M3.8 12h4.8M15.4 12h4.8"/>',
+  gauge:
+    '<circle cx="12" cy="12" r="8.2"/><path d="M12 12l3.6-3.2"/><path d="M12 3.8v1.6M20.2 12h-1.6M12 20.2v-1.6M3.8 12h1.6"/>',
+  trim:
+    '<path d="M11 3.4l1.6 4.1 4.1 1.6-4.1 1.6L11 14.8 9.4 10.7 5.3 9.1l4.1-1.6z"/><path d="M17.8 15.2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>',
+};
+---
+
+<svg
+  viewBox="0 0 24 24"
+  class={className}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  set:html={icons[name]}
+/>
