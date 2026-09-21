@@ -1,0 +1,35 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000
+
+# Хешированные ассеты Astro (CSS/JS/шрифты) — кэшируем навсегда
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Фотографии машин и иллюстрации: имена стабильные — месяц и фоновая ревалидация
+/cars/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+
+/scenes/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+/hero.jpg
+  Cache-Control: public, max-age=604800
+
+/og.jpg
+  Cache-Control: public, max-age=604800
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/sitemap-index.xml
+  Cache-Control: public, max-age=86400
+
+/sitemap-0.xml
+  Cache-Control: public, max-age=86400
