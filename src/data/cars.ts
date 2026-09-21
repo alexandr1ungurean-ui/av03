@@ -291,6 +291,40 @@ export const cars: Car[] = [
     description:
       'The Chevrolet Bel Air, an iconic model that defined automotive styling through the mid-century, reached its most celebrated form in the second generation, famously dubbed the \u201cHot One.\u201d The 1957 model year was particularly notable, with engine displacement increasing to 283 cubic inches and producing 283 horsepower, matching the performance of the Corvette of its era. This stunning Bel Air coupe showcases a single comprehensive restoration and is finished in its factory-correct two-tone Highland Green over Surf Green. With an odometer reading of 80,750 miles, the vehicle has received extensive attention in the past five years. Its body, paint, interior, seals, exhaust, brakes, and fuel system were all addressed between 2017 and 2019, resulting in a very presentable finish that, while not entirely flawless, is remarkably good. Mechanically, the numbers-matching 283ci V8 engine has been completely rebuilt, complemented by an upgraded 700R4 4-speed automatic transmission with overdrive, allowing for comfortable cruising at 55 MPH at just 1500 RPMs. This Bel Air starts perfectly, runs smoothly, tracks straight, and operates without any known issues, making it a superb addition for any enthusiast.',
   },
+  {
+    slug: 'chevrolet-corvette-1967',
+    brand: 'Chevrolet',
+    model: 'Corvette',
+    year: 1967,
+    price: 40900,
+    body: 'Convertible',
+    engine: 'Dowker 383 cu in V8 (6.3L)',
+    mileage: 56595,
+    transmission: '5-Speed Manual (Tremec)',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'Hugger Orange',
+    silhouette: 'classic',
+    images: ['/cars/chevrolet-corvette-1967.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: true,
+    features: [
+      'Dowker-built 383 cu in V8, reportedly over 450 horsepower',
+      'Aluminum heads',
+      '5-speed Tremec manual transmission',
+      'Tubular race suspension',
+      'Raced in SCCA regional events',
+      'Headlights relocated into the front grille',
+      'Street legal — all lighting and gauges in working order',
+      'Hugger Orange paint',
+      'Black interior in good condition',
+      'Convertible top with age-expected wear',
+    ],
+    description:
+      'A highly sought-after classic, this 1967 Chevrolet Corvette Convertible embodies the spirit of the muscle car era within its iconic C2 design. Far from original, this Vette has been built for performance, notably having been raced in SCCA regional events. Power comes from a formidable Dowker 383 cubic inch V8 engine, reportedly delivering over 450 horsepower, mated to a robust 5-speed Tremec manual transmission. Further performance upgrades include tubular race suspension and ALU heads. Styling is enhanced by headlights uniquely relocated within the front grill, maintaining street legality with all lighting and gauges in working order. While the Hugger Orange paint and Black interior are in good condition, the convertible top shows its age with expected wear and minor cracking. This Corvette is a true street beast, offering a raw and exhilarating driving experience for the enthusiast.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);

@@ -32,7 +32,7 @@ export type FeatureIconName =
  */
 const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
   [
-    /v-?8|engine|manifold|intake|carburett?or|valve cover|air cleaner|exhaust|header|muffler|flowmaster|performer|cu in|cubic|cylinder|efi|fuel injection|horsepower|\bhp\b|procharg|supercharg|turbo|blower|intercooler|inject|dyno|whp|torque|piston|camshaft|\bcam\b|cooling|radiator/i,
+    /v-?8|engine|manifold|intake|carburett?or|valve cover|air cleaner|exhaust|header|muffler|flowmaster|performer|cu in|cubic|cylinder|aluminum head|alu head|efi|fuel injection|horsepower|\bhp\b|procharg|supercharg|turbo|blower|intercooler|inject|dyno|whp|torque|piston|camshaft|\bcam\b|cooling|radiator/i,
     'engine',
   ],
   [/transmission|speed manual|automatic|shifter|gearbox|clutch|console|overdrive|\brpm\b/i, 'shifter'],
@@ -50,7 +50,7 @@ const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
     'gauge',
   ],
   [
-    /restor|frame-off|refinish|rebuild|survivor|documented|like-new|solid|rust-free|dry|runs|starts|tracks straight|no known/i,
+    /restor|frame-off|refinish|rebuild|survivor|documented|like-new|solid|rust-free|dry|runs|starts|tracks straight|no known|scca|raced/i,
     'condition',
   ],
   [/chrome|stainless|trim|bumper|grille|paint|bodywork|brightwork|carbon|two-tone|factory-correct/i, 'trim'],
