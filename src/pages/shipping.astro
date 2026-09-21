@@ -120,7 +120,14 @@ const terms = [
       {
         options.map((option, i) => (
           <article data-reveal style={`--reveal-delay: ${i * 60}ms`} class="tag flex flex-col p-6">
-            <Plate src={option.image} alt={option.alt} framed={false} eager={i === 0} class="w-full" />
+            <Plate
+              src={option.image}
+              alt={option.alt}
+              size="card"
+              framed={false}
+              eager={i === 0}
+              class="w-full"
+            />
             <div class="mt-5 flex items-baseline justify-between gap-4 border-b border-chrome pb-3">
               <h2 class="display text-2xl text-ink">{option.name}</h2>
             </div>
@@ -187,6 +194,7 @@ const terms = [
           <Plate
             src="/scenes/shipping-export.webp"
             alt="Illustration of a shipping container beside a globe with an export route"
+            size="card"
             class="w-full"
           />
         </div>

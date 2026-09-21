@@ -441,8 +441,13 @@ async function main() {
     const svg = plate({ art: scene.art, caption: scene.caption, index });
     const file = path.join(OUT, `${name}.webp`);
     await sharp(Buffer.from(svg)).webp({ quality: 90, effort: 5 }).toFile(file);
+    // smaller cut for cards and row thumbnails (~600 CSS px wide slots)
+    await sharp(Buffer.from(svg))
+      .resize(640, 480)
+      .webp({ quality: 86, effort: 5 })
+      .toFile(path.join(OUT, `${name}-card.webp`));
     const meta = await sharp(file).metadata();
-    console.log(`ok: ${name}.webp  ${meta.width}x${meta.height}`);
+    console.log(`ok: ${name}.webp (+ -card)  ${meta.width}x${meta.height}`);
     index += 1;
   }
   console.log(`\n${Object.keys(scenes).length} plates written to ${OUT}`);

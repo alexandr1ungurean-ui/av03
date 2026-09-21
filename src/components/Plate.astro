@@ -9,6 +9,8 @@ interface Props {
   eager?: boolean;
   /** wrap in the bordered passe-partout frame (default) or sit flush inside a card */
   framed?: boolean;
+  /** 'full' (1200x900) for wide slots, 'card' (640x480) for rows and cards */
+  size?: 'full' | 'card';
   class?: string;
 }
 
@@ -19,9 +21,13 @@ const {
   caption,
   eager = false,
   framed = true,
+  size = 'full',
   class: className = '',
 } = Astro.props;
 
+const file = size === 'card' ? src.replace(/\.webp$/i, '-card.webp') : src;
+const w = size === 'card' ? 640 : 1200;
+const h = size === 'card' ? 480 : 900;
 const box = `relative overflow-hidden bg-paper ${ratio}`;
 ---
 
@@ -31,10 +37,10 @@ const box = `relative overflow-hidden bg-paper ${ratio}`;
       <div class="frame">
         <div class={box}>
           <img
-            src={src}
+            src={file}
             alt={alt}
-            width="1200"
-            height="900"
+            width={w}
+            height={h}
             loading={eager ? 'eager' : 'lazy'}
             decoding="async"
             class="absolute inset-0 h-full w-full object-cover"
@@ -44,10 +50,10 @@ const box = `relative overflow-hidden bg-paper ${ratio}`;
     ) : (
       <div class={`${box} border border-chrome`}>
         <img
-          src={src}
+          src={file}
           alt={alt}
-          width="1200"
-          height="900"
+          width={w}
+          height={h}
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
           class="absolute inset-0 h-full w-full object-cover"
