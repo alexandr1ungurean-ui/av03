@@ -50,7 +50,7 @@ const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
     'gauge',
   ],
   [
-    /restor|frame-off|refinish|rebuild|survivor|documented|like-new|solid|rust-free|dry|runs|starts|tracks straight|no known|scca|raced/i,
+    /restor|frame-off|refinish|rebuild|survivor|documented|like-new|solid|rust-free|dry|runs|starts|fires up|drives|tracks straight|no known|scca|raced/i,
     'condition',
   ],
   [/chrome|stainless|trim|bumper|grille|paint|bodywork|brightwork|carbon|two-tone|factory-correct/i, 'trim'],

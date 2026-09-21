@@ -325,6 +325,39 @@ export const cars: Car[] = [
     description:
       'A highly sought-after classic, this 1967 Chevrolet Corvette Convertible embodies the spirit of the muscle car era within its iconic C2 design. Far from original, this Vette has been built for performance, notably having been raced in SCCA regional events. Power comes from a formidable Dowker 383 cubic inch V8 engine, reportedly delivering over 450 horsepower, mated to a robust 5-speed Tremec manual transmission. Further performance upgrades include tubular race suspension and ALU heads. Styling is enhanced by headlights uniquely relocated within the front grill, maintaining street legality with all lighting and gauges in working order. While the Hugger Orange paint and Black interior are in good condition, the convertible top shows its age with expected wear and minor cracking. This Corvette is a true street beast, offering a raw and exhilarating driving experience for the enthusiast.',
   },
+  {
+    slug: 'chevrolet-nova-1967',
+    brand: 'Chevrolet',
+    model: 'Nova SS',
+    year: 1967,
+    price: 38900,
+    body: 'Coupe',
+    engine: '327 cu in V8 (5.4L)',
+    mileage: 46579,
+    transmission: '4-Speed Manual',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'Madeira Maroon',
+    silhouette: 'coupe',
+    images: ['/cars/chevrolet-nova-1967.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: false,
+    features: [
+      '327 cu in V8 now producing 350 hp — up from the stock 275',
+      'Engine and transmission in strong working condition',
+      '4-speed manual transmission',
+      'Madeira Maroon exterior with SS badging',
+      'Thin whitewall tires',
+      'Black interior with factory-optional bucket seats',
+      'Fires up readily and drives true',
+      'Straight, solid body panels',
+      'Fully functional lighting',
+    ],
+    description:
+      'This 1967 Chevrolet Nova SS perfectly embodies the classic American muscle car era. Originally equipped with Chevrolet\u2019s potent 327ci V8 engine and a 4-speed manual transmission, this Nova SS delivers ample power, with its engine now producing an impressive 350 horsepower, a significant upgrade from the stock 275 hp. The engine and transmission are both in strong working condition, propelling the car down the road with enthusiasm. The vehicle presents beautifully in a deep Madeira Maroon exterior, complemented by striking SS badging and thin whitewall tires. Its black interior, featuring factory-optional bucket seats, remains in exceptional condition. Mechanically sound, this Nova SS fires up readily, drives true, and maintains a straight body with fully functional lighting. This Nova SS represents a desirable and recognizable piece of classic American automotive heritage.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);
