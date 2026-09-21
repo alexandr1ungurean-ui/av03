@@ -35,7 +35,7 @@ const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
     /v-?8|engine|manifold|intake|carburett?or|valve cover|air cleaner|exhaust|header|muffler|flowmaster|performer|cu in|cubic|cylinder|efi|fuel injection|horsepower|\bhp\b|procharg|supercharg|turbo|blower|intercooler|inject|dyno|whp|torque|piston|camshaft|\bcam\b|cooling|radiator/i,
     'engine',
   ],
-  [/transmission|speed manual|automatic|shifter|gearbox|clutch|console/i, 'shifter'],
+  [/transmission|speed manual|automatic|shifter|gearbox|clutch|console|overdrive|\brpm\b/i, 'shifter'],
   [/seat|upholster|interior|hide|door card|headliner/i, 'seat'],
   [/steering/i, 'steering'],
   [/brake|disc|drum/i, 'brake'],
@@ -49,8 +49,11 @@ const FEATURE_RULES: Array<[RegExp, FeatureIconName]> = [
     /\ba\/c\b|air conditioning|heat|gauge|instrument|dashboard|radio|stereo|audio|speaker|subwoofer|clock|tachometer|led|lighting|windows?|locks?|digital/i,
     'gauge',
   ],
-  [/restor|frame-off|refinish|rebuild|survivor|documented|like-new|solid|rust-free|dry/i, 'condition'],
-  [/chrome|stainless|trim|bumper|grille|paint|bodywork|brightwork|carbon/i, 'trim'],
+  [
+    /restor|frame-off|refinish|rebuild|survivor|documented|like-new|solid|rust-free|dry|runs|starts|tracks straight|no known/i,
+    'condition',
+  ],
+  [/chrome|stainless|trim|bumper|grille|paint|bodywork|brightwork|carbon|two-tone|factory-correct/i, 'trim'],
 ];
 
 export function featureIcon(feature: string): FeatureIconName {

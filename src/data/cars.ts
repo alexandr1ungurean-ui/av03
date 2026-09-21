@@ -255,6 +255,42 @@ export const cars: Car[] = [
     description:
       'This 1972 Chevrolet Chevelle SS Restomod masterfully blends classic muscle car aesthetics with modern performance and comfort, having undergone a comprehensive transformation. Powering this standout performer is a rebuilt and bored 530ci V8 engine, originally a 454ci, now enhanced with Mahle pistons, Dart heads, a Comp cam, electric cooling fans, and a FiTech electronic fuel injection system, generating an exhilarating 670 horsepower and 480 pound-feet of torque. This potent engine is paired with a robust 350TH automatic transmission featuring a 3000 stall converter and a 4.11 rear end for exceptional acceleration. The ride is both thrilling and smooth, thanks to a full Ride Tech suspension system with muscle bars, strong arms, and adjustable height coilover shocks, while Wilwood disc brakes on both front and rear ensure superior stopping power. Its aggressive yet sophisticated exterior is finished in a fresh coat of House of Kolor\u2019s Majestic Blue, complemented by custom Savani wheels, measuring 22 inches in the rear and 20 inches in the front. Inside, the Chevelle maintains a classic appearance while offering modern conveniences, including a Dakota Digital dashboard, blue LED interior lighting, custom power-adjustable front seats, power windows, and power locks. An upgraded Kenwood KDC-X996 audio system with a 12-inch subwoofer provides a powerful soundtrack for every journey. This Chevelle SS Restomod is a true testament to expert craftsmanship and the harmonious integration of automotive heritage with contemporary technology.',
   },
+  {
+    slug: 'chevrolet-bel-air-1957',
+    brand: 'Chevrolet',
+    model: 'Bel Air',
+    year: 1957,
+    price: 48900,
+    body: 'Hardtop',
+    engine: '283 cu in V8, numbers-matching (4.6L)',
+    mileage: 80750,
+    transmission: '4-Speed Automatic (700R4)',
+    drive: 'Rear-Wheel Drive',
+    fuel: 'Gasoline',
+    color: 'Highland Green / Surf Green',
+    silhouette: 'classic',
+    images: ['/cars/chevrolet-bel-air-1957.webp'],
+    doors: 2,
+    cylinders: 8,
+    condition: 'Used',
+    featured: true,
+    features: [
+      'Numbers-matching 283 cu in V8, completely rebuilt',
+      '283 horsepower — Corvette-level output for its era',
+      'Upgraded 700R4 4-speed automatic with overdrive',
+      'Relaxed cruising — 55 mph at just 1500 rpm',
+      'Single comprehensive restoration',
+      'Body and paint work completed between 2017 and 2019',
+      'Interior and body seals refurbished 2017–2019',
+      'New exhaust and fuel system',
+      'Rebuilt brakes',
+      'Factory-correct two-tone Highland Green over Surf Green',
+      'Starts perfectly, runs smoothly and tracks straight',
+      'No known mechanical issues',
+    ],
+    description:
+      'The Chevrolet Bel Air, an iconic model that defined automotive styling through the mid-century, reached its most celebrated form in the second generation, famously dubbed the \u201cHot One.\u201d The 1957 model year was particularly notable, with engine displacement increasing to 283 cubic inches and producing 283 horsepower, matching the performance of the Corvette of its era. This stunning Bel Air coupe showcases a single comprehensive restoration and is finished in its factory-correct two-tone Highland Green over Surf Green. With an odometer reading of 80,750 miles, the vehicle has received extensive attention in the past five years. Its body, paint, interior, seals, exhaust, brakes, and fuel system were all addressed between 2017 and 2019, resulting in a very presentable finish that, while not entirely flawless, is remarkably good. Mechanically, the numbers-matching 283ci V8 engine has been completely rebuilt, complemented by an upgraded 700R4 4-speed automatic transmission with overdrive, allowing for comfortable cruising at 55 MPH at just 1500 RPMs. This Bel Air starts perfectly, runs smoothly, tracks straight, and operates without any known issues, making it a superb addition for any enthusiast.',
+  },
 ];
 
 export const featuredCars = cars.filter((car) => car.featured);
