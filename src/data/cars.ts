@@ -58,18 +58,18 @@ export const cars: Car[] = [
       '389 cu in V8 with Edelbrock intake manifold',
       'Polished valve covers and chrome air cleaner',
       '4-speed manual transmission',
-      'Hurst T-handle shifter with centre console',
+      'Hurst T-handle shifter with center console',
       'Bucket seats, black interior refinished in 2017',
       'Wood-grain steering wheel',
       'Power steering',
       'Power brakes',
       'Power-operated white convertible top',
       '14-inch factory steel wheels with beauty rings and hubcaps',
-      'BFGoodrich Radial T/A tyres',
+      'BFGoodrich Radial T/A tires',
       'Correct exterior chrome on straight Starlight Black bodywork',
     ],
     description:
-      'The 1965 Pontiac GTO Convertible, an enduring icon among muscle cars, combines potent performance with classic styling. Under the hood, a robust 389ci V8 engine delivers impressive power, channelled through a responsive 4-speed manual transmission. Performance has been enhanced with an Edelbrock intake manifold, further adorned with polished valve covers and an air cleaner. Finished in a lustrous Starlight Black, the bodywork is straight and reflective, complemented by gleaming exterior chrome. The car maintains its authentic stance on 14-inch factory steel wheels, featuring correct beauty rings and hubcaps, fitted with BFGoodrich Radial T/A tyres for excellent handling. The black interior, noted to have been refinished in 2017, remains in very good condition, presenting bucket seats with a centre console, a Hurst T-handle shifter, and a wood-grain steering wheel. The white convertible top is in excellent condition, offering a sophisticated contrast. Additional features include power steering, power brakes, and a power top, enhancing the driving experience of this legendary muscle car. This GTO is a fantastic example, ready to impress with its blend of power and classic appeal.',
+      'The 1965 Pontiac GTO Convertible, an enduring icon among muscle cars, combines potent performance with classic styling. Under the hood, a robust 389ci V8 engine delivers impressive power, channeled through a responsive 4-speed manual transmission. Performance has been enhanced with an Edelbrock intake manifold, further adorned with polished valve covers and an air cleaner. Finished in a lustrous Starlight Black, the bodywork is straight and reflective, complemented by gleaming exterior chrome. The car maintains its authentic stance on 14-inch factory steel wheels, featuring correct beauty rings and hubcaps, fitted with BFGoodrich Radial T/A tires for excellent handling. The black interior, noted to have been refinished in 2017, remains in very good condition, presenting bucket seats with a center console, a Hurst T-handle shifter, and a wood-grain steering wheel. The white convertible top is in excellent condition, offering a sophisticated contrast. Additional features include power steering, power brakes, and a power top, enhancing the driving experience of this legendary muscle car. This GTO is a fantastic example, ready to impress with its blend of power and classic appeal.',
   },
 ];
 
