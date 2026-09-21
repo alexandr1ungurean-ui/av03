@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import Plate from '../components/Plate.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { site, stats, testimonials } from '../data/site';
 
@@ -48,23 +49,15 @@ const capabilities = [
 
   <section class="container-x pb-16">
     <div data-reveal class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-      <figure class="lg:col-span-7">
-        <div class="frame">
-          <div class="relative aspect-[16/11] overflow-hidden bg-paper">
-            <img
-              src="/hero.jpg"
-              alt="The Golden Era Motors workshop floor in Detroit"
-              width="1200"
-              height="825"
-              loading="eager"
-              class="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        </div>
-        <figcaption class="label mt-3 text-center text-muted">
-          The shop floor · {site.address}
-        </figcaption>
-      </figure>
+      <div class="lg:col-span-7">
+        <Plate
+          src="/scenes/about-storefront.webp"
+          alt="Illustration of the Golden Era Motors garage on Michigan Avenue with its sign, awning and two roll-up doors"
+          caption={`The shop · ${site.address}`}
+          eager
+          class="w-full"
+        />
+      </div>
 
       <div class="lg:col-span-5">
         <div class="space-y-5 text-base leading-relaxed text-ink/80">
@@ -134,22 +127,49 @@ const capabilities = [
     <div class="section-label">
       <span class="label shrink-0 text-muted">In the workshop</span>
     </div>
-    <dl class="mt-10 grid grid-cols-1 border-t border-chrome lg:grid-cols-2">
-      {
-        capabilities.map((item, i) => (
-          <div
-            class:list={[
-              'flex flex-col gap-1 border-b border-chrome py-5 lg:flex-row lg:items-baseline lg:gap-8',
-              i % 2 === 0 && 'lg:pr-10',
-              i % 2 === 1 && 'lg:border-l lg:border-chrome lg:pl-10',
-            ]}
-          >
-            <dt class="display w-full shrink-0 text-xl text-ink lg:w-56">{item.label}</dt>
-            <dd class="min-w-0 flex-1 text-sm leading-relaxed text-muted">{item.detail}</dd>
-          </div>
-        ))
-      }
-    </dl>
+
+    <div class="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="lg:col-span-5">
+        <Plate
+          src="/scenes/about-workshop.webp"
+          alt="Illustration of a pegboard tool wall above a workbench with a vise and oil can"
+          caption="Every job is written up at the bench"
+          class="w-full"
+        />
+      </div>
+
+      <dl class="border-t border-chrome lg:col-span-7">
+        {
+          capabilities.map((item, i) => (
+            <div
+              data-reveal
+              style={`--reveal-delay: ${(i % 3) * 50}ms`}
+              class="flex flex-col gap-1 border-b border-chrome py-5 lg:flex-row lg:items-baseline lg:gap-8"
+            >
+              <dt class="display w-full shrink-0 text-xl text-ink lg:w-56">{item.label}</dt>
+              <dd class="min-w-0 flex-1 text-sm leading-relaxed text-muted">{item.detail}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="container-x pb-16">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <Plate
+        src="/scenes/service-chrome.webp"
+        alt="Illustration of a re-plated front bumper, grille and emblem"
+        caption="Re-plated bumpers, grilles and emblems"
+        class="w-full"
+      />
+      <Plate
+        src="/scenes/service-interior.webp"
+        alt="Illustration of a bench seat, steering wheel and instrument panel"
+        caption="Correct hides and period stitching"
+        class="w-full"
+      />
+    </div>
   </section>
 
   <section class="container-x pb-20 md:pb-24">

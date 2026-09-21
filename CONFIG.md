@@ -95,31 +95,69 @@ site: 'https://av03.pages.dev',
 
 ---
 
-## 5. Бренд в ассетах (вручную, вне site.ts)
+## 5. Картинки-иллюстрации → `public/scenes/` + `scripts/make-scenes.mjs`
+
+Страницы Shipping, Restoration, About и Contact наполнены винтажными «плашками» —
+векторные иллюстрации в палитре сайта (бумага, чернила, бордо, хром). Они рисуются
+скриптом и лежат в `public/scenes/*.webp` (1200×900, ~50 КБ каждая).
+
+| Файл | Где используется |
+|---|---|
+| `service-restoration.webp` | Restoration — верхнее трио + строка «Full Restoration» |
+| `service-engine.webp` | Restoration — «Engine & Drivetrain» |
+| `service-bodywork.webp` | Restoration — трио + «Paint & Bodywork» |
+| `service-chrome.webp` | Restoration — «Chrome & Trim» + блок на About |
+| `service-interior.webp` | Restoration — «Upholstery» + блок на About |
+| `service-appraisal.webp` | Restoration — «Appraisal & Consignment» |
+| `shipping-enclosed.webp` | Shipping — карточка «Enclosed transport» |
+| `shipping-open.webp` | Shipping — карточка «Open transport» |
+| `shipping-expedited.webp` | Shipping — карточка «Expedited delivery» |
+| `shipping-export.webp` | Shipping — блок «Export and international delivery» |
+| `about-storefront.webp` | About — главное фото + Contact — «Look for the burgundy sign» |
+| `about-workshop.webp` | About — блок «In the workshop» + трио на Restoration |
+| `contacts-map.webp` | Contact — «Finding us» |
+
+```bash
+pnpm scenes          # перерисовать все плашки
+```
+
+Правки текста на плашках (подписи, «GOLDEN ERA MOTORS», «PL. NN») — в объекте `scenes`
+внутри `scripts/make-scenes.mjs`. Каждая сцена описана SVG-примитивами (`rect`, `line`,
+`carSil`, `wheel`, `dots`) в координатах холста 1200×900.
+
+**Когда появятся реальные фото** мастерской/перевозки — просто замените нужный файл
+в `public/scenes/` (или положите фото и сошлитесь на него в разметке страницы). Компонент
+`src/components/Plate.astro` принимает `src`, `alt`, `caption`, `framed`, `eager`.
+
+---
+
+## 6. Бренд в ассетах (вручную, вне site.ts)
 
 | Файл | Что менять |
 |---|---|
 | `public/favicon.svg` | рамка + монограмма «G» |
 | `scripts/make-og.mjs` | текст «GOLDEN ERA MOTORS», «EST. 1978 · DETROIT, MICHIGAN», `av03.pages.dev` |
 | `scripts/make-hero.mjs` | фон-заглушка героя: «1978», город, слоган |
-| `public/hero.jpg` | заглушка героя и фон галереи |
+| `scripts/make-scenes.mjs` | подписи и «GOLDEN ERA MOTORS» на плашках |
+| `public/hero.jpg` | заглушка героя и фон галереи на главной |
 | `public/og.jpg` | превью для соцсетей |
 
 Перегенерация:
 ```bash
 pnpm hero                            # public/hero.jpg
+pnpm scenes                          # public/scenes/*.webp (13 плашек)
 pnpm og                              # public/og.jpg — плакат без фото
 node scripts/make-og.mjs img/shop.jpg   # public/og.jpg — с фото справа
 ```
 
 ---
 
-## 6. Чек-лист при смене бренда/контактов
+## 7. Чек-лист при смене бренда/контактов
 
 1. `src/data/site.ts` — name, brandShort, brandTail, monogram, phone, phoneHref, email, address, hours, url, established
 2. `astro.config.mjs` — site (если меняется домен) + `public/robots.txt`
 3. `public/favicon.svg` — монограмма
-4. `scripts/make-hero.mjs`, `scripts/make-og.mjs` — текст → `pnpm hero && pnpm og`
+4. `scripts/make-hero.mjs`, `scripts/make-scenes.mjs`, `scripts/make-og.mjs` — текст → `pnpm hero && pnpm scenes && pnpm og`
 5. `src/pages/terms.astro` — штат/округ в разделе «Governing Law and Venue» (сейчас Michigan / Wayne County)
 6. `src/data/cars.ts` — если меняется инвентарь
 7. `pnpm build` → `git push` (Cloudflare деплоит сам)
@@ -132,6 +170,7 @@ node scripts/make-og.mjs img/shop.jpg   # public/og.jpg — с фото спра
 pnpm dev        # локальный dev-сервер (http://localhost:4321)
 pnpm build      # сборка в ./dist
 pnpm photos     # img/ → public/cars/*.webp + *.avif (полный + -card)
+pnpm scenes     # перерисовать иллюстрации public/scenes/*.webp
 pnpm hero       # перегенерация public/hero.jpg
 pnpm og         # перегенерация public/og.jpg
 ```

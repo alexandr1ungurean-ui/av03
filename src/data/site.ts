@@ -35,6 +35,9 @@ export interface Service {
   title: string;
   description: string;
   price: string;
+  /** illustrated plate in /public/scenes */
+  image: string;
+  alt: string;
 }
 
 export const services: Service[] = [
@@ -44,6 +47,8 @@ export const services: Service[] = [
     description:
       'Frame-off restorations to concours standard — documented, photographed and delivered with a full build file.',
     price: 'from $45,000',
+    image: '/scenes/service-restoration.webp',
+    alt: 'Illustration of a classic car raised on a two-post lift with its wheels set aside',
   },
   {
     slug: 'engine',
@@ -51,6 +56,8 @@ export const services: Service[] = [
     description:
       'Matching-numbers rebuilds, period-correct carburetion and transmission work by marque specialists.',
     price: 'from $8,500',
+    image: '/scenes/service-engine.webp',
+    alt: 'Illustration of a V8 engine block with valve covers, spark plugs and belt drive',
   },
   {
     slug: 'bodywork',
@@ -58,6 +65,8 @@ export const services: Service[] = [
     description:
       'Metal finishing, lead work and period-correct lacquer or base-coat finishes matched to original codes.',
     price: 'from $12,000',
+    image: '/scenes/service-bodywork.webp',
+    alt: 'Illustration of a spray gun laying a fan of paint onto a car panel',
   },
   {
     slug: 'chrome',
@@ -65,6 +74,8 @@ export const services: Service[] = [
     description:
       'Show-quality re-plating, stainless polishing and correct fasteners for every nut and bolt.',
     price: 'from $1,800',
+    image: '/scenes/service-chrome.webp',
+    alt: 'Illustration of a re-plated front bumper, grille and emblem',
   },
   {
     slug: 'interior',
@@ -72,6 +83,8 @@ export const services: Service[] = [
     description:
       'Correct hides, period patterns and original-style stitching — down to the door cards and headliner.',
     price: 'from $6,500',
+    image: '/scenes/service-interior.webp',
+    alt: 'Illustration of a bench seat, steering wheel and instrument panel',
   },
   {
     slug: 'appraisal',
@@ -79,6 +92,8 @@ export const services: Service[] = [
     description:
       'Written appraisals for insurance and estate purposes, plus consignment sales to a worldwide buyer list.',
     price: 'on request',
+    image: '/scenes/service-appraisal.webp',
+    alt: 'Illustration of a signed appraisal document with an approved stamp',
   },
 ];
 

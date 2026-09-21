@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaSection from '../components/CtaSection.astro';
 import Button from '../components/Button.astro';
+import Plate from '../components/Plate.astro';
 import { site } from '../data/site';
 
 const options = [
@@ -10,18 +11,24 @@ const options = [
     price: 'from $1,450',
     body: 'Hard-sided, single- or two-car enclosed trailer with soft straps over the tyres. The default choice for restored cars, convertibles and anything with fresh paint.',
     best: 'Concours cars, fresh restorations, long distances',
+    image: '/scenes/shipping-enclosed.webp',
+    alt: 'Illustration of an enclosed car trailer hitched to a tow vehicle',
   },
   {
     name: 'Open transport',
     price: 'from $750',
     body: 'Standard multi-car carrier, fully insured, door-to-door or to the nearest terminal. Ideal for drivers and project cars where a little road dust is not a concern.',
     best: 'Drivers, projects, regional moves',
+    image: '/scenes/shipping-open.webp',
+    alt: 'Illustration of a two-deck open car carrier loaded with two cars',
   },
   {
     name: 'Expedited delivery',
     price: 'from $2,600',
     body: 'Dedicated enclosed trailer, dedicated driver, no consolidating and no waiting for a full load. Typically collected within 72 hours of cleared payment.',
     best: 'Time-critical sales, auctions, cross-country moves',
+    image: '/scenes/shipping-expedited.webp',
+    alt: 'Illustration of a flatbed truck carrying one car at speed, with a clock',
   },
 ];
 
@@ -112,8 +119,9 @@ const terms = [
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       {
         options.map((option, i) => (
-          <article data-reveal style={`--reveal-delay: ${i * 60}ms`} class="tag flex flex-col p-7">
-            <div class="flex items-baseline justify-between gap-4 border-b border-chrome pb-3">
+          <article data-reveal style={`--reveal-delay: ${i * 60}ms`} class="tag flex flex-col p-6">
+            <Plate src={option.image} alt={option.alt} framed={false} eager={i === 0} class="w-full" />
+            <div class="mt-5 flex items-baseline justify-between gap-4 border-b border-chrome pb-3">
               <h2 class="display text-2xl text-ink">{option.name}</h2>
             </div>
             <p class="display mt-4 text-xl text-burgundy">{option.price}</p>
@@ -175,6 +183,13 @@ const terms = [
         <h2 class="display mt-4 text-3xl leading-none text-ink md:text-4xl">
           Export and international delivery
         </h2>
+        <div class="mt-7">
+          <Plate
+            src="/scenes/shipping-export.webp"
+            alt="Illustration of a shipping container beside a globe with an export route"
+            class="w-full"
+          />
+        </div>
       </div>
       <div class="space-y-4 text-base leading-relaxed text-ink/80 md:col-span-8">
         <p>
@@ -188,6 +203,21 @@ const terms = [
           registration in the destination country. We will tell you plainly what the car will need
           before you commit, and we will not ship to a port we cannot document properly.
         </p>
+        <ul class="grid grid-cols-1 gap-x-10 border-t border-chrome pt-4 sm:grid-cols-2">
+          {
+            [
+              'Export declaration and certificate of origin',
+              'Container loading photographed and logged',
+              'Title and bill of sale couriered to the buyer',
+              'Named contact at the shop until the car lands',
+            ].map((item) => (
+              <li class="flex items-start gap-3 border-b border-chrome py-3 text-sm text-ink/80">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-burgundy"></span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
         <div class="pt-2">
           <Button href="/contacts" variant="ghost">Request an export quote</Button>
         </div>

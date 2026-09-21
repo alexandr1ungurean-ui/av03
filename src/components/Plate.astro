@@ -1,0 +1,59 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  /** tailwind aspect class for the image box */
+  ratio?: string;
+  caption?: string;
+  /** load immediately instead of lazily — use for the first image on a page */
+  eager?: boolean;
+  /** wrap in the bordered passe-partout frame (default) or sit flush inside a card */
+  framed?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  ratio = 'aspect-[4/3]',
+  caption,
+  eager = false,
+  framed = true,
+  class: className = '',
+} = Astro.props;
+
+const box = `relative overflow-hidden bg-paper ${ratio}`;
+---
+
+<figure class={className}>
+  {
+    framed ? (
+      <div class="frame">
+        <div class={box}>
+          <img
+            src={src}
+            alt={alt}
+            width="1200"
+            height="900"
+            loading={eager ? 'eager' : 'lazy'}
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    ) : (
+      <div class={`${box} border border-chrome`}>
+        <img
+          src={src}
+          alt={alt}
+          width="1200"
+          height="900"
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
+    )
+  }
+  {caption && <figcaption class="label mt-3 text-center text-muted">{caption}</figcaption>}
+</figure>

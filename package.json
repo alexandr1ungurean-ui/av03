@@ -10,6 +10,7 @@
     "astro": "astro",
     "photos": "node scripts/to-webp.mjs img",
     "hero": "node scripts/make-hero.mjs",
+    "scenes": "node scripts/make-scenes.mjs",
     "og": "node scripts/make-og.mjs"
   },
   "dependencies": {
